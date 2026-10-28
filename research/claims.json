@@ -1,0 +1,452 @@
+[
+  {
+    "id": "C-001",
+    "claim": "GitHub App user access tokens grant only permissions and resources shared by the user and app, making them the required credential for user-driven repository reads.",
+    "kind": "software",
+    "load_bearing": true,
+    "sources": [
+      {
+        "url": "https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      },
+      {
+        "url": "https://docs.github.com/en/rest/apps/installations",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      }
+    ],
+    "confidence": "corroborated",
+    "evidence_class": "n/a",
+    "contradicted_by": [],
+    "informs": []
+  },
+  {
+    "id": "C-002",
+    "claim": "Expiring GitHub App user access tokens last eight hours; refresh tokens last six months and rotate on use.",
+    "kind": "software",
+    "load_bearing": true,
+    "sources": [
+      {
+        "url": "https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/refreshing-user-access-tokens",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      },
+      {
+        "url": "https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      }
+    ],
+    "confidence": "corroborated",
+    "evidence_class": "n/a",
+    "contradicted_by": [],
+    "informs": []
+  },
+  {
+    "id": "C-003",
+    "claim": "Installation access tokens expire after one hour and can be restricted by repositories and permissions; they are not per-user authorization.",
+    "kind": "software",
+    "load_bearing": true,
+    "sources": [
+      {
+        "url": "https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      },
+      {
+        "url": "https://docs.github.com/en/apps/using-github-apps/reviewing-and-modifying-installed-github-apps",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      }
+    ],
+    "confidence": "corroborated",
+    "evidence_class": "n/a",
+    "contradicted_by": [],
+    "informs": []
+  },
+  {
+    "id": "C-004",
+    "claim": "GitHub App installations can select all or only specific repositories, and owners can suspend or uninstall the app.",
+    "kind": "software",
+    "load_bearing": true,
+    "sources": [
+      {
+        "url": "https://docs.github.com/en/apps/using-github-apps/reviewing-and-modifying-installed-github-apps",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      },
+      {
+        "url": "https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      }
+    ],
+    "confidence": "corroborated",
+    "evidence_class": "n/a",
+    "contradicted_by": [],
+    "informs": []
+  },
+  {
+    "id": "C-005",
+    "claim": "The repository Contents API supports GitHub App user tokens with Contents read, refs, files and directories; directories cap at 1,000 entries and larger files need raw/object handling.",
+    "kind": "software",
+    "load_bearing": true,
+    "sources": [
+      {
+        "url": "https://docs.github.com/en/rest/repos/contents#get-repository-content",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      },
+      {
+        "url": "https://docs.github.com/en/rest/git/trees#get-a-tree",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      }
+    ],
+    "confidence": "corroborated",
+    "evidence_class": "n/a",
+    "contradicted_by": [],
+    "informs": []
+  },
+  {
+    "id": "C-006",
+    "claim": "A Kimi Code plugin can declare a remote HTTP MCP server in kimi.plugin.json and be installed from a GitHub repository URL.",
+    "kind": "software",
+    "load_bearing": true,
+    "sources": [
+      {
+        "url": "https://www.kimi.com/code/docs/en/kimi-code-cli/customization/plugins",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      },
+      {
+        "url": "https://www.kimi.com/code/docs/en/kimi-code-cli/customization/mcp.html",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      }
+    ],
+    "confidence": "corroborated",
+    "evidence_class": "n/a",
+    "contradicted_by": [],
+    "informs": []
+  },
+  {
+    "id": "C-007",
+    "claim": "Kimi Code supports browser OAuth for remote MCP and its changelog demonstrates dynamic client-registration handling.",
+    "kind": "software",
+    "load_bearing": true,
+    "sources": [
+      {
+        "url": "https://www.kimi.com/code/docs/en/kimi-code-cli/customization/mcp.html",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      },
+      {
+        "url": "https://www.kimi.com/code/docs/en/kimi-code-cli/changelog.html",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      }
+    ],
+    "confidence": "corroborated",
+    "evidence_class": "n/a",
+    "contradicted_by": [],
+    "informs": []
+  },
+  {
+    "id": "C-008",
+    "claim": "An OAuth-protected MCP server must publish protected-resource metadata and validate audience-bound tokens; current MCP supports CIMD and retains DCR for backward compatibility.",
+    "kind": "software",
+    "load_bearing": true,
+    "sources": [
+      {
+        "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      },
+      {
+        "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/security_best_practices",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      }
+    ],
+    "confidence": "corroborated",
+    "evidence_class": "n/a",
+    "contradicted_by": [],
+    "informs": []
+  },
+  {
+    "id": "C-009",
+    "claim": "An OAuth proxy with static upstream client ID and dynamic downstream clients must obtain per-client consent before GitHub authorization and enforce exact redirect and single-use state controls.",
+    "kind": "software",
+    "load_bearing": true,
+    "sources": [
+      {
+        "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/security_best_practices",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      },
+      {
+        "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      }
+    ],
+    "confidence": "corroborated",
+    "evidence_class": "n/a",
+    "contradicted_by": [],
+    "informs": []
+  },
+  {
+    "id": "C-010",
+    "claim": "GitHub Apps receive github_app_authorization when a user revokes authorization and must stop acting for that user.",
+    "kind": "software",
+    "load_bearing": true,
+    "sources": [
+      {
+        "url": "https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      },
+      {
+        "url": "https://docs.github.com/en/webhooks/webhook-events-and-payloads#github_app_authorization",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      }
+    ],
+    "confidence": "corroborated",
+    "evidence_class": "n/a",
+    "contradicted_by": [],
+    "informs": []
+  },
+  {
+    "id": "C-011",
+    "claim": "Webhook deliveries must be verified from the raw UTF-8 body using X-Hub-Signature-256 and constant-time comparison.",
+    "kind": "software",
+    "load_bearing": true,
+    "sources": [
+      {
+        "url": "https://docs.github.com/en/webhooks/using-webhooks/validating-webhook-deliveries",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      },
+      {
+        "url": "https://docs.github.com/en/webhooks/webhook-events-and-payloads",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      }
+    ],
+    "confidence": "corroborated",
+    "evidence_class": "n/a",
+    "contradicted_by": [],
+    "informs": []
+  },
+  {
+    "id": "C-012",
+    "claim": "GitHub user-token REST limits are normally 5,000 requests/hour, secondary limits include 100 concurrent requests, and 403/429 retries must honor rate-limit and Retry-After headers.",
+    "kind": "software",
+    "load_bearing": true,
+    "sources": [
+      {
+        "url": "https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      },
+      {
+        "url": "https://docs.github.com/en/apps/creating-github-apps/about-creating-github-apps/best-practices-for-creating-a-github-app",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      }
+    ],
+    "confidence": "corroborated",
+    "evidence_class": "n/a",
+    "contradicted_by": [],
+    "informs": []
+  },
+  {
+    "id": "C-013",
+    "claim": "Node.js 24.22.1 is an LTS security release published 2026-10-21 and is the preferred runtime baseline.",
+    "kind": "software",
+    "load_bearing": true,
+    "sources": [
+      {
+        "url": "https://nodejs.org/en/blog/release/v24.22.1",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      },
+      {
+        "url": "https://nodejs.org/en/about/previous-releases",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      }
+    ],
+    "confidence": "corroborated",
+    "evidence_class": "n/a",
+    "contradicted_by": [],
+    "informs": []
+  },
+  {
+    "id": "C-014",
+    "claim": "Kimi Code 2.3.3 is the documented compatibility target as of 2026-10-26.",
+    "kind": "software",
+    "load_bearing": true,
+    "sources": [
+      {
+        "url": "https://www.kimi.com/code/docs/en/kimi-code-cli/changelog.html",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      },
+      {
+        "url": "https://www.kimi.com/code/docs/en/kimi-code-cli/customization/plugins",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      }
+    ],
+    "confidence": "corroborated",
+    "evidence_class": "n/a",
+    "contradicted_by": [],
+    "informs": []
+  },
+  {
+    "id": "C-015",
+    "claim": "MCP Streamable HTTP uses POST messages to one endpoint with JSON or request-scoped SSE responses.",
+    "kind": "software",
+    "load_bearing": true,
+    "sources": [
+      {
+        "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/transports",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      },
+      {
+        "url": "https://www.kimi.com/code/docs/en/kimi-code-cli/customization/mcp.html",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-28 live docs",
+        "locator": "relevant section",
+        "accessed": "2026-10-28",
+        "tier": 1
+      }
+    ],
+    "confidence": "corroborated",
+    "evidence_class": "n/a",
+    "contradicted_by": [],
+    "informs": []
+  }
+]
