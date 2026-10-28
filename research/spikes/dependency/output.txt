@@ -1,0 +1,11 @@
+Node: v24.22.1
+npm: 11.19.1
+Node archive SHA-256: 6c172a9ab6718f7b801fb5a7bd486af2ee5e32758086a04b84fcce2aa77095e6
+Expected SHA-256: 6c172a9ab6718f7b801fb5a7bd486af2ee5e32758086a04b84fcce2aa77095e6
+Checksum match: true
+Dependency lockfile version: 3
+Locked package entries: 552
+Clean npm ci from committed lockfile: PASS
+TypeScript import spike: PASS (strict=true, skipLibCheck=true)
+Production npm audit at 2026-10-29: {'info': 0, 'low': 0, 'moderate': 0, 'high': 0, 'critical': 0, 'total': 0}
+Note: two installs on the persistent output mount exceeded 115 seconds; the identical clean-lockfile probe on local storage passed in 6 seconds.

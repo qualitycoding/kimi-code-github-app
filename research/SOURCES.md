@@ -18,3 +18,9 @@ Accessed 2026-10-28 UTC. Tier 1 means official specification, documentation, rel
 14. [GitHub REST rate limits](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api) — Tier 1. User-token limits, concurrency/point secondary limits, and response-header backoff rules.
 15. [GitHub App best practices](https://docs.github.com/en/apps/creating-github-apps/about-creating-github-apps/best-practices-for-creating-a-github-app) — Tier 1. Least privilege, secret storage, minimal webhooks, monitoring, and deletion.
 16. [Node.js 24.22.1 release](https://nodejs.org/en/blog/release/v24.22.1) — Tier 1. LTS release dated 2026-10-21 and security fixes.
+17. [GitHub REST: Git trees](https://docs.github.com/en/rest/git/trees#get-a-tree) — Tier 1. `truncated` response semantics and recursive-tree ceiling of 100,000 entries / 7 MB.
+18. [GitHub REST OpenAPI description](https://github.com/github/rest-api-description) — Tier 1. Official response schema corroborating the tree `truncated` field.
+19. [OAuth Client ID Metadata Document draft](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-client-id-metadata-document-00) — Tier 1. HTTPS-URL client ID and JSON metadata-document contract.
+20. [MCP TypeScript SDK repository and releases](https://github.com/modelcontextprotocol/typescript-sdk) — Tier 1. Stable v2 package split, 2026-07-28 support, framework adapters, and Node requirement.
+21. [npm registry](https://registry.npmjs.org/) — Tier 1 release metadata. Exact package versions and engine ranges queried 2026-10-29.
+22. Local dependency spike `research/spikes/dependency/` — verified empirical evidence. Node checksum, lockfile, TypeScript import compile, and production audit output.

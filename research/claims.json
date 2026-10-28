@@ -448,5 +448,155 @@
     "evidence_class": "n/a",
     "contradicted_by": [],
     "informs": []
+  },
+  {
+    "id": "C-016",
+    "claim": "Recursive GitHub trees expose an upstream truncated flag and are limited to 100,000 entries or 7 MB; connector truncation must be tracked independently.",
+    "kind": "software",
+    "load_bearing": true,
+    "sources": [
+      {
+        "url": "https://docs.github.com/en/rest/git/trees#get-a-tree",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-29 live metadata",
+        "locator": "relevant section",
+        "accessed": "2026-10-29",
+        "tier": 1
+      },
+      {
+        "url": "https://github.com/github/rest-api-description",
+        "doi": "",
+        "title": "Official OpenAPI description",
+        "version": "2026-10-29 live metadata",
+        "locator": "relevant section",
+        "accessed": "2026-10-29",
+        "tier": 1
+      }
+    ],
+    "confidence": "corroborated",
+    "evidence_class": "n/a",
+    "contradicted_by": [],
+    "informs": []
+  },
+  {
+    "id": "C-017",
+    "claim": "GitHub App user-token refresh rotates both credentials and invalidates the old access and refresh tokens, so persistence and refresh must be atomic per user.",
+    "kind": "software",
+    "load_bearing": true,
+    "sources": [
+      {
+        "url": "https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/refreshing-user-access-tokens",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-29 live metadata",
+        "locator": "relevant section",
+        "accessed": "2026-10-29",
+        "tier": 1
+      },
+      {
+        "url": "https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app",
+        "doi": "",
+        "title": "Official documentation",
+        "version": "2026-10-29 live metadata",
+        "locator": "relevant section",
+        "accessed": "2026-10-29",
+        "tier": 1
+      }
+    ],
+    "confidence": "corroborated",
+    "evidence_class": "n/a",
+    "contradicted_by": [],
+    "informs": []
+  },
+  {
+    "id": "C-018",
+    "claim": "CIMD uses an HTTPS URL as client ID and a fetched JSON metadata document; MCP clients and metadata fetchers must apply SSRF defenses.",
+    "kind": "software",
+    "load_bearing": true,
+    "sources": [
+      {
+        "url": "https://datatracker.ietf.org/doc/html/draft-ietf-oauth-client-id-metadata-document-00",
+        "doi": "",
+        "title": "IETF draft specification",
+        "version": "2026-10-29 live metadata",
+        "locator": "relevant section",
+        "accessed": "2026-10-29",
+        "tier": 1
+      },
+      {
+        "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/security_best_practices",
+        "doi": "",
+        "title": "MCP security specification",
+        "version": "2026-10-29 live metadata",
+        "locator": "relevant section",
+        "accessed": "2026-10-29",
+        "tier": 1
+      }
+    ],
+    "confidence": "corroborated",
+    "evidence_class": "n/a",
+    "contradicted_by": [],
+    "informs": []
+  },
+  {
+    "id": "C-019",
+    "claim": "The stable MCP TypeScript v2 server is @modelcontextprotocol/server with separate Express/Node adapters and Node >=20 support.",
+    "kind": "software",
+    "load_bearing": true,
+    "sources": [
+      {
+        "url": "https://github.com/modelcontextprotocol/typescript-sdk",
+        "doi": "",
+        "title": "Official SDK source and releases",
+        "version": "2026-10-29 live metadata",
+        "locator": "relevant section",
+        "accessed": "2026-10-29",
+        "tier": 1
+      },
+      {
+        "url": "https://registry.npmjs.org/@modelcontextprotocol/server",
+        "doi": "",
+        "title": "Official package release metadata",
+        "version": "2.4.0",
+        "locator": "version and engines",
+        "accessed": "2026-10-29",
+        "tier": 1
+      }
+    ],
+    "confidence": "verified",
+    "evidence_class": "n/a",
+    "contradicted_by": [],
+    "informs": []
+  },
+  {
+    "id": "C-020",
+    "claim": "The selected exact runtime and dependency graph installs, imports, and type-checks on Node 24.22.1 with TypeScript 7.0.2 and has zero production npm-audit findings at verification time.",
+    "kind": "software",
+    "load_bearing": true,
+    "sources": [
+      {
+        "url": "research/spikes/dependency/README.md",
+        "doi": "",
+        "title": "Local reproducible dependency spike",
+        "version": "2026-10-29",
+        "locator": "recorded command output",
+        "accessed": "2026-10-29",
+        "tier": 1
+      },
+      {
+        "url": "https://registry.npmjs.org/",
+        "doi": "",
+        "title": "Official package release metadata",
+        "version": "exact versions in package-lock.json",
+        "locator": "registry resolution",
+        "accessed": "2026-10-29",
+        "tier": 1
+      }
+    ],
+    "confidence": "verified",
+    "evidence_class": "n/a",
+    "contradicted_by": [],
+    "informs": []
   }
 ]
