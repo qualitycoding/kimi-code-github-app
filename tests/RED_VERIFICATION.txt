@@ -1,0 +1,12 @@
+Red verification date: 2026-10-29 UTC
+Runtime: Node v24.22.1, npm 11.19.1, Vitest 5.0.5
+Type-check before red run: PASS (strict=true; zero diagnostics)
+Command: ./node_modules/.bin/vitest run --reporter=dot
+Expected red exit: 1
+Observed: 6 failed test files; 30 failed tests; 0 passed; 0 skipped
+Failure cause: every test reached a NOT_IMPLEMENTED stub (60 reporter occurrences including stack repetition)
+Syntax errors: 0
+Missing imports: 0
+Missing fixtures: 0
+Broken test-harness errors: 0
+Conclusion: RED VERIFIED. The tests are valid and await implementation; this is not a passing implementation result.

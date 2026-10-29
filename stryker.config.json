@@ -1,0 +1,15 @@
+{
+  "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "mutate": [
+    "src/**/*.ts",
+    "!src/contracts.ts",
+    "!src/not-implemented.ts"
+  ],
+  "testRunner": "vitest",
+  "reporters": ["clear-text", "html", "json"],
+  "coverageAnalysis": "perTest",
+  "thresholds": { "high": 90, "low": 85, "break": 85 },
+  "concurrency": 4,
+  "timeoutMS": 120000,
+  "cleanTempDir": true
+}

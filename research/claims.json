@@ -27,7 +27,10 @@
     "confidence": "corroborated",
     "evidence_class": "n/a",
     "contradicted_by": [],
-    "informs": []
+    "informs": [
+      "D-003",
+      "D-009"
+    ]
   },
   {
     "id": "C-002",
@@ -57,7 +60,9 @@
     "confidence": "corroborated",
     "evidence_class": "n/a",
     "contradicted_by": [],
-    "informs": []
+    "informs": [
+      "D-007"
+    ]
   },
   {
     "id": "C-003",
@@ -87,7 +92,9 @@
     "confidence": "corroborated",
     "evidence_class": "n/a",
     "contradicted_by": [],
-    "informs": []
+    "informs": [
+      "D-003"
+    ]
   },
   {
     "id": "C-004",
@@ -117,7 +124,9 @@
     "confidence": "corroborated",
     "evidence_class": "n/a",
     "contradicted_by": [],
-    "informs": []
+    "informs": [
+      "D-008"
+    ]
   },
   {
     "id": "C-005",
@@ -147,7 +156,10 @@
     "confidence": "corroborated",
     "evidence_class": "n/a",
     "contradicted_by": [],
-    "informs": []
+    "informs": [
+      "D-009",
+      "D-010"
+    ]
   },
   {
     "id": "C-006",
@@ -177,7 +189,9 @@
     "confidence": "corroborated",
     "evidence_class": "n/a",
     "contradicted_by": [],
-    "informs": []
+    "informs": [
+      "D-023"
+    ]
   },
   {
     "id": "C-007",
@@ -207,7 +221,10 @@
     "confidence": "corroborated",
     "evidence_class": "n/a",
     "contradicted_by": [],
-    "informs": []
+    "informs": [
+      "D-005",
+      "D-023"
+    ]
   },
   {
     "id": "C-008",
@@ -237,7 +254,11 @@
     "confidence": "corroborated",
     "evidence_class": "n/a",
     "contradicted_by": [],
-    "informs": []
+    "informs": [
+      "D-004",
+      "D-005",
+      "D-012"
+    ]
   },
   {
     "id": "C-009",
@@ -267,7 +288,9 @@
     "confidence": "corroborated",
     "evidence_class": "n/a",
     "contradicted_by": [],
-    "informs": []
+    "informs": [
+      "D-004"
+    ]
   },
   {
     "id": "C-010",
@@ -297,7 +320,10 @@
     "confidence": "corroborated",
     "evidence_class": "n/a",
     "contradicted_by": [],
-    "informs": []
+    "informs": [
+      "D-007",
+      "D-014"
+    ]
   },
   {
     "id": "C-011",
@@ -327,7 +353,9 @@
     "confidence": "corroborated",
     "evidence_class": "n/a",
     "contradicted_by": [],
-    "informs": []
+    "informs": [
+      "D-014"
+    ]
   },
   {
     "id": "C-012",
@@ -357,7 +385,9 @@
     "confidence": "corroborated",
     "evidence_class": "n/a",
     "contradicted_by": [],
-    "informs": []
+    "informs": [
+      "D-016"
+    ]
   },
   {
     "id": "C-013",
@@ -387,7 +417,9 @@
     "confidence": "corroborated",
     "evidence_class": "n/a",
     "contradicted_by": [],
-    "informs": []
+    "informs": [
+      "plan/ENVIRONMENT.md"
+    ]
   },
   {
     "id": "C-014",
@@ -417,7 +449,9 @@
     "confidence": "corroborated",
     "evidence_class": "n/a",
     "contradicted_by": [],
-    "informs": []
+    "informs": [
+      "D-002"
+    ]
   },
   {
     "id": "C-015",
@@ -447,7 +481,9 @@
     "confidence": "corroborated",
     "evidence_class": "n/a",
     "contradicted_by": [],
-    "informs": []
+    "informs": [
+      "D-012"
+    ]
   },
   {
     "id": "C-016",
@@ -477,7 +513,9 @@
     "confidence": "corroborated",
     "evidence_class": "n/a",
     "contradicted_by": [],
-    "informs": []
+    "informs": [
+      "D-010"
+    ]
   },
   {
     "id": "C-017",
@@ -507,7 +545,10 @@
     "confidence": "corroborated",
     "evidence_class": "n/a",
     "contradicted_by": [],
-    "informs": []
+    "informs": [
+      "D-006",
+      "D-007"
+    ]
   },
   {
     "id": "C-018",
@@ -537,7 +578,9 @@
     "confidence": "corroborated",
     "evidence_class": "n/a",
     "contradicted_by": [],
-    "informs": []
+    "informs": [
+      "D-005"
+    ]
   },
   {
     "id": "C-019",
@@ -567,7 +610,10 @@
     "confidence": "verified",
     "evidence_class": "n/a",
     "contradicted_by": [],
-    "informs": []
+    "informs": [
+      "D-012",
+      "plan/ENVIRONMENT.md"
+    ]
   },
   {
     "id": "C-020",
@@ -597,6 +643,106 @@
     "confidence": "verified",
     "evidence_class": "n/a",
     "contradicted_by": [],
-    "informs": []
+    "informs": [
+      "plan/ENVIRONMENT.md",
+      "D-027"
+    ]
+  },
+  {
+    "id": "C-021",
+    "claim": "Docker Engine 29.9.2 and Docker Compose 5.6.1 are the verified deployment version pins from official October 2026 security-release metadata.",
+    "kind": "software",
+    "load_bearing": true,
+    "sources": [
+      {
+        "url": "https://docs.docker.com/engine/release-notes/29/",
+        "doi": "",
+        "title": "Official Docker Engine release notes",
+        "version": "29.9.2",
+        "locator": "29.9.2 release",
+        "accessed": "2026-10-29",
+        "tier": 1
+      },
+      {
+        "url": "https://github.com/docker/compose/releases",
+        "doi": "",
+        "title": "Official Docker Compose releases",
+        "version": "5.6.1",
+        "locator": "v5.6.1 release",
+        "accessed": "2026-10-29",
+        "tier": 1
+      }
+    ],
+    "confidence": "corroborated",
+    "evidence_class": "n/a",
+    "contradicted_by": [],
+    "informs": [
+      "D-019"
+    ]
+  },
+  {
+    "id": "C-022",
+    "claim": "Caddy 2.11.7 is the deployment pin from the official release and distribution channels.",
+    "kind": "software",
+    "load_bearing": true,
+    "sources": [
+      {
+        "url": "https://github.com/caddyserver/caddy/releases",
+        "doi": "",
+        "title": "Official Caddy releases",
+        "version": "2.11.7",
+        "locator": "v2.11.7 release",
+        "accessed": "2026-10-29",
+        "tier": 1
+      },
+      {
+        "url": "https://caddyserver.com/download",
+        "doi": "",
+        "title": "Official Caddy distribution",
+        "version": "2026-10-29",
+        "locator": "download channel",
+        "accessed": "2026-10-29",
+        "tier": 1
+      }
+    ],
+    "confidence": "corroborated",
+    "evidence_class": "n/a",
+    "contradicted_by": [],
+    "informs": [
+      "D-019"
+    ]
+  },
+  {
+    "id": "C-023",
+    "claim": "PostgreSQL 18.6 is a supported security-update release and is the database deployment pin.",
+    "kind": "software",
+    "load_bearing": true,
+    "sources": [
+      {
+        "url": "https://www.postgresql.org/docs/release/18.6/",
+        "doi": "",
+        "title": "Official PostgreSQL release notes",
+        "version": "18.6",
+        "locator": "release 18.6",
+        "accessed": "2026-10-29",
+        "tier": 1
+      },
+      {
+        "url": "https://www.postgresql.org/support/versioning/",
+        "doi": "",
+        "title": "Official PostgreSQL versioning policy",
+        "version": "2026-10-29",
+        "locator": "supported versions",
+        "accessed": "2026-10-29",
+        "tier": 1
+      }
+    ],
+    "confidence": "corroborated",
+    "evidence_class": "n/a",
+    "contradicted_by": [],
+    "informs": [
+      "D-013",
+      "D-019"
+    ]
   }
 ]

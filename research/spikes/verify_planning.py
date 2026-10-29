@@ -14,9 +14,11 @@ required = [
     "plan/DECISIONS.md", "plan/GATES.md", "plan/ENVIRONMENT.md",
     "plan/TRACEABILITY.md", "plan/OPERATIONS.md", "research/QUESTIONS.md",
     "research/PRIOR_KNOWLEDGE.md", "research/claims.json", "research/SOURCES.md",
-    "tests/FROZEN_MANIFEST.sha256", "premortem/RISK_REGISTER.md",
-    "premortem/ASSUMPTION_AUDIT.md", "reviews/CODE_REVIEW.md",
-    "reviews/ADVERSARIAL_REVIEW.md", "reviews/MUTATION.md", "package-lock.json",
+    "tests/FROZEN_MANIFEST.sha256", "premortem/round-1.md",
+    "premortem/round-2.md", "premortem/RISK_REGISTER.md",
+    "premortem/ASSUMPTION_AUDIT.md", "reviews/COLD_READ.md",
+    "reviews/CODE_REVIEW.md", "reviews/ADVERSARIAL_REVIEW.md",
+    "reviews/MUTATION.md", "package-lock.json",
 ]
 for name in required:
     if not (ROOT / name).is_file():
@@ -122,6 +124,52 @@ if "./deploy/rollback.sh" not in operations:
 gates = (ROOT / "plan/GATES.md").read_text()
 if "G-003" not in gates or "G-002" not in gates:
     problems.append("missing gate definitions")
+if not re.search(r"^Status: READY", plan, re.M):
+    problems.append("plan is not READY")
+
+risk_text = (ROOT / "premortem/RISK_REGISTER.md").read_text()
+risk_rows = {}
+for line in risk_text.splitlines():
+    match = re.match(r"^\| (R-\d{3}) \|", line)
+    if match:
+        cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
+        risk_rows[match.group(1)] = cells
+expected_risks = {f"R-{n:03d}" for n in range(1, 16)}
+if set(risk_rows) != expected_risks:
+    problems.append("risk register must contain R-001 through R-015 exactly")
+severities = [cells[3] for cells in risk_rows.values() if len(cells) > 3]
+if {name: severities.count(name) for name in {"Critical", "High", "Medium", "Low"}} != {"Critical": 1, "High": 6, "Medium": 7, "Low": 1}:
+    problems.append("risk severity counts differ from final plan header")
+if "No Critical/High risk is unresolved" not in risk_text:
+    problems.append("risk convergence statement missing")
+
+audit = (ROOT / "premortem/ASSUMPTION_AUDIT.md").read_text()
+verdicts = []
+for prefix, count in [("A", 15), ("D", 33), ("T", 30)]:
+    for number in range(1, count + 1):
+        item = f"{prefix}-{number:03d}"
+        rows = [line for line in audit.splitlines() if line.startswith(f"| {item} |")]
+        if len(rows) != 1:
+            problems.append(f"assumption audit row count for {item}: {len(rows)}")
+            continue
+        cells = [cell.strip() for cell in rows[0].strip().strip("|").split("|")]
+        if len(cells) < 5 or cells[3] not in {"confirmed", "falsified", "unverifiable"}:
+            problems.append(f"{item}: missing or ambiguous verdict")
+        else:
+            verdicts.append(cells[3])
+if [verdicts.count(v) for v in ("confirmed", "falsified", "unverifiable")] != [63, 0, 15]:
+    problems.append("assumption-audit verdict counts differ from final totals")
+
+state = json.loads((ROOT / ".checkpoints/state.json").read_text())
+if state.get("premortem_round") != 2 or state.get("research_round") != 5:
+    problems.append("checkpoint round counts are stale")
+for name, digest in state.get("artifacts", {}).items():
+    path = ROOT / name
+    if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != digest:
+        problems.append(f"checkpoint artifact mismatch: {name}")
+for name in ["reviews/CODE_REVIEW.md", "reviews/ADVERSARIAL_REVIEW.md", "reviews/MUTATION.md"]:
+    if "Status: NOT RUN" not in (ROOT / name).read_text():
+        problems.append(f"review placeholder is not honestly NOT RUN: {name}")
 
 print("\n".join(problems) if problems else f"all mechanical checks valid: {len(steps)} steps, 30 tests, {len(claims)} claims, {len(entries)} L/K entries")
 sys.exit(1 if problems else 0)

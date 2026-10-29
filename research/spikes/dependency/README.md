@@ -16,4 +16,4 @@ npm ci --ignore-scripts --no-audit --no-fund
 npm audit --omit=dev
 ```
 
-Expected: Node `v24.22.1`, npm `11.19.1`, a matching checksum, exit 0 from TypeScript, and no Critical production audit finding. The archived output predates the final mutation-tool addition; the final lockfile and root setup were re-verified afterward.
+Expected: Node `v24.22.1`, npm `11.19.1`, a matching checksum, exit 0 from TypeScript, and no Critical production audit finding. The final lockfile includes the mutation tools and the archived output records the clean verification.

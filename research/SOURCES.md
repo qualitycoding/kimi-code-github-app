@@ -24,3 +24,6 @@ Accessed 2026-10-28 UTC. Tier 1 means official specification, documentation, rel
 20. [MCP TypeScript SDK repository and releases](https://github.com/modelcontextprotocol/typescript-sdk) — Tier 1. Stable v2 package split, 2026-07-28 support, framework adapters, and Node requirement.
 21. [npm registry](https://registry.npmjs.org/) — Tier 1 release metadata. Exact package versions and engine ranges queried 2026-10-29.
 22. Local dependency spike `research/spikes/dependency/` — verified empirical evidence. Node checksum, lockfile, TypeScript import compile, and production audit output.
+23. [Docker Engine 29 release notes](https://docs.docker.com/engine/release-notes/29/) and [Docker Compose releases](https://github.com/docker/compose/releases) — Tier 1. Engine 29.9.2 and Compose 5.6.1 security-release metadata.
+24. [Caddy releases](https://github.com/caddyserver/caddy/releases) and [Caddy download](https://caddyserver.com/download) — Tier 1. Caddy 2.11.7 release/distribution metadata.
+25. [PostgreSQL 18.6 release notes](https://www.postgresql.org/docs/release/18.6/) and [versioning policy](https://www.postgresql.org/support/versioning/) — Tier 1. PostgreSQL 18.6 security fixes and supported-release policy.

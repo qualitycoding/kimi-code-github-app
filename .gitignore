@@ -1,0 +1,12 @@
+node_modules/
+.runtime/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+coverage/
+.stryker-tmp/
+dist/
+research/results/
+!research/results/.gitkeep
