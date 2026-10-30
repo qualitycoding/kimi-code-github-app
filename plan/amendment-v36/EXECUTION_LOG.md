@@ -61,3 +61,17 @@ The amendment plan itself is preserved at `plan/amendment-v36/AMENDMENT_V36_PLAN
   gained a `Persistence (v3.6 Rule 6)` action and a remote-HEAD verification clause in
   `Done when`. `reviews/COLD_READ.md` intentionally untouched (deferred to S-AMEND-008).
 - Next step: S-AMEND-004.
+
+## 2026-10-30T21:44:00Z — S-AMEND-004 — attempt 1 — pass
+
+- Appended the universal artifact-postcondition clause to all 24 connector step
+  `Done when` fields (Outputs paths exist/non-empty/`git diff --check` clean; evidence
+  recorded in `EXECUTION_LOG.md` with validation result).
+- Added the 17 specific postconditions (S-000, S-002…S-012, S-015, S-ADVERSARIAL,
+  S-MUTATE, S-019, S-RETRO) to the corresponding `Done when` fields; no test criterion was
+  weakened (frozen tests untouched — `sha256sum -c tests/FROZEN_MANIFEST.sha256` re-run
+  below).
+- Ambiguous artifact paths pinned without weakening criteria: S-011 Outputs gained
+  `research/results/aggregate-test-log.json`; descriptive postcondition names in S-011,
+  S-012, S-015, S-019, and S-RETRO now name their concrete `Outputs` paths.
+- Next step: S-AMEND-005.

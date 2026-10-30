@@ -31,7 +31,7 @@ completed.
 - Persistence (v3.6 Rule 6): after this step turns green, commit the changed paths with a precise message, push to the working branch, verify the remote head with `git ls-remote` (local HEAD must equal the remote hash), and record the verified hash in `EXECUTION_LOG.md`; on mismatch stop and reconcile from committed state, never force-push.
 - Outputs: implementation branch; `EXECUTION_LOG.md`; `DEVIATIONS.md`; `.runtime/` ignored tool binaries; `ENVIRONMENT_VERIFICATION.md`
 - Evidence produced: environment versions, lockfile/freeze hashes, non-secret access results; no T-### yet
-- Done when: every setup, version, credential-permission, host, and reachability check passes and `sha256sum -c tests/FROZEN_MANIFEST.sha256` succeeds; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`
+- Done when: every setup, version, credential-permission, host, and reachability check passes and `sha256sum -c tests/FROZEN_MANIFEST.sha256` succeeds; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`; and every path listed in Outputs exists, is non-empty where it is a file, passes `git diff --check`, and the evidence named in Evidence produced is recorded in `EXECUTION_LOG.md` with its validation result; and `ENVIRONMENT_VERIFICATION.md`, `EXECUTION_LOG.md`, and `DEVIATIONS.md` each contain the environment class, remote head, and setup-check results
 - Checkpoint: record implementation branch, environment evidence path, commit, and S-000 pass in `.checkpoints/state.json`
 - On failure: before feature work, write `BLOCKED.md` listing each missing item; do not patch versions or request a PAT. After fixing access, rerun from a clean checkout with `git restore --source=HEAD --staged --worktree .`
 - Gate: none
@@ -48,7 +48,7 @@ completed.
 - Persistence (v3.6 Rule 6): after this step turns green, commit the changed paths with a precise message, push to the working branch, verify the remote head with `git ls-remote` (local HEAD must equal the remote hash), and record the verified hash in `EXECUTION_LOG.md`; on mismatch stop and reconcile from committed state, never force-push.
 - Outputs: `src/config.ts`, `src/db/*`, `src/server.ts`, `drizzle/*`, `.env.example`, `Dockerfile`, initial `deploy/*`
 - Evidence produced: T-016, T-017; migration up/down compatibility output
-- Done when: T-016 and T-017 pass; missing configuration fails redacted; schema contains no repository source/path columns; migrations rerun idempotently; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`
+- Done when: T-016 and T-017 pass; missing configuration fails redacted; schema contains no repository source/path columns; migrations rerun idempotently; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`; and every path listed in Outputs exists, is non-empty where it is a file, passes `git diff --check`, and the evidence named in Evidence produced is recorded in `EXECUTION_LOG.md` with its validation result
 - Checkpoint: record migration version, files, test results, and commit
 - On failure: retry database startup once; `git restore --source=HEAD --staged --worktree src deploy drizzle .env.example Dockerfile`; if schema/data integrity is uncertain write `BLOCKED.md` rather than deleting volumes
 - Gate: none
@@ -65,7 +65,7 @@ completed.
 - Persistence (v3.6 Rule 6): after this step turns green, commit the changed paths with a precise message, push to the working branch, verify the remote head with `git ls-remote` (local HEAD must equal the remote hash), and record the verified hash in `EXECUTION_LOG.md`; on mismatch stop and reconcile from committed state, never force-push.
 - Outputs: `src/security/random.ts`, `src/security/crypto.ts`, `src/tokens/*`, updated test harness adapters
 - Evidence produced: unit evidence supporting T-006, T-007, T-012, T-015, T-022; no new frozen tests
-- Done when: concurrent refresh commits one generation, replay fails closed, plaintext credentials never appear in database/logs, and relevant frozen tests reach their later integration assertions; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`
+- Done when: concurrent refresh commits one generation, replay fails closed, plaintext credentials never appear in database/logs, and relevant frozen tests reach their later integration assertions; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`; and every path listed in Outputs exists, is non-empty where it is a file, passes `git diff --check`, and the evidence named in Evidence produced is recorded in `EXECUTION_LOG.md` with its validation result; and the token/crypto evidence records concurrent-refresh, replay, redaction, and fixed-clock results
 - Checkpoint: record key ID, migration compatibility, concurrency result, and commit; never record key material
 - On failure: revoke test grants and rerun once; `git restore --source=HEAD --staged --worktree src`; any replay/encryption ambiguity requires `BLOCKED.md`
 - Gate: none
@@ -82,7 +82,7 @@ completed.
 - Persistence (v3.6 Rule 6): after this step turns green, commit the changed paths with a precise message, push to the working branch, verify the remote head with `git ls-remote` (local HEAD must equal the remote hash), and record the verified hash in `EXECUTION_LOG.md`; on mismatch stop and reconcile from committed state, never force-push.
 - Outputs: `src/oauth/clients.ts`, `src/oauth/metadata-fetch.ts`, `src/oauth/registration.ts`, redacted test fixtures
 - Evidence produced: T-002, T-003, T-024; SSRF resolver evidence
-- Done when: T-002, T-003, and T-024 pass, including redirect-to-private and DNS-rebinding cases, with no arbitrary URL fetch; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`
+- Done when: T-002, T-003, and T-024 pass, including redirect-to-private and DNS-rebinding cases, with no arbitrary URL fetch; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`; and every path listed in Outputs exists, is non-empty where it is a file, passes `git diff --check`, and the evidence named in Evidence produced is recorded in `EXECUTION_LOG.md` with its validation result; and the SSRF evidence records redirect-to-private and DNS-rebinding cases
 - Checkpoint: record client-metadata policy, fetch bounds, tests, and commit
 - On failure: disable registration resolution and `git restore --source=HEAD --staged --worktree src/oauth tests/fixtures`; any SSRF bypass remains Critical and blocks progress
 - Gate: none
@@ -99,7 +99,7 @@ completed.
 - Persistence (v3.6 Rule 6): after this step turns green, commit the changed paths with a precise message, push to the working branch, verify the remote head with `git ls-remote` (local HEAD must equal the remote hash), and record the verified hash in `EXECUTION_LOG.md`; on mismatch stop and reconcile from committed state, never force-push.
 - Outputs: `src/oauth/authorize.ts`, `src/oauth/consent.ts`, `src/oauth/github.ts`, consent HTML/CSS, updated stores
 - Evidence produced: T-004, T-005; GitHub token-shape fixture with secrets removed
-- Done when: T-004 and T-005 pass; no GitHub redirect occurs before consent; no GitHub token appears in a browser redirect or MCP response; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`
+- Done when: T-004 and T-005 pass; no GitHub redirect occurs before consent; no GitHub token appears in a browser redirect or MCP response; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`; and every path listed in Outputs exists, is non-empty where it is a file, passes `git diff --check`, and the evidence named in Evidence produced is recorded in `EXECUTION_LOG.md` with its validation result; and the consent evidence records no pre-consent GitHub redirect and no GitHub token in browser or MCP output
 - Checkpoint: record OAuth expiry constants, state-machine tests, and commit
 - On failure: delete transient test rows and `git restore --source=HEAD --staged --worktree src/oauth src/tokens`; halt on any consent/state/token leak
 - Gate: none
@@ -116,7 +116,7 @@ completed.
 - Persistence (v3.6 Rule 6): after this step turns green, commit the changed paths with a precise message, push to the working branch, verify the remote head with `git ls-remote` (local HEAD must equal the remote hash), and record the verified hash in `EXECUTION_LOG.md`; on mismatch stop and reconcile from committed state, never force-push.
 - Outputs: `src/oauth/metadata.ts`, `src/oauth/token.ts`, `src/oauth/revoke.ts`, `src/http/authentication.ts`
 - Evidence produced: T-001, T-006, T-007
-- Done when: T-001, T-006, and T-007 pass; wrong-resource tokens never reach MCP handlers; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`
+- Done when: T-001, T-006, and T-007 pass; wrong-resource tokens never reach MCP handlers; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`; and every path listed in Outputs exists, is non-empty where it is a file, passes `git diff --check`, and the evidence named in Evidence produced is recorded in `EXECUTION_LOG.md` with its validation result; and the authentication evidence records wrong-resource and wrong-audience rejection
 - Checkpoint: record metadata URLs, rotation test, and commit
 - On failure: revoke test grants and `git restore --source=HEAD --staged --worktree src/oauth src/http`; any audience bypass blocks all later steps
 - Gate: none
@@ -133,7 +133,7 @@ completed.
 - Persistence (v3.6 Rule 6): after this step turns green, commit the changed paths with a precise message, push to the working branch, verify the remote head with `git ls-remote` (local HEAD must equal the remote hash), and record the verified hash in `EXECUTION_LOG.md`; on mismatch stop and reconcile from committed state, never force-push.
 - Outputs: `src/github/client.ts`, `src/github/repositories.ts`, `src/github/refresh.ts`, `src/github/errors.ts`
 - Evidence produced: T-008, T-009, T-014, T-015
-- Done when: all four tests pass; cross-tenant fixtures produce 404 before repository data is returned; old refresh replay cannot corrupt the committed credential; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`
+- Done when: all four tests pass; cross-tenant fixtures produce 404 before repository data is returned; old refresh replay cannot corrupt the committed credential; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`; and every path listed in Outputs exists, is non-empty where it is a file, passes `git diff --check`, and the evidence named in Evidence produced is recorded in `EXECUTION_LOG.md` with its validation result; and the gateway evidence records cross-tenant 404 behavior and refresh-generation protection
 - Checkpoint: record pagination/rate-limit/refresh evidence and commit
 - On failure: clear advisory cache and `git restore --source=HEAD --staged --worktree src/github`; any cross-user exposure is Critical, revoke test credentials, and write `BLOCKED.md`
 - Gate: none
@@ -150,7 +150,7 @@ completed.
 - Persistence (v3.6 Rule 6): after this step turns green, commit the changed paths with a precise message, push to the working branch, verify the remote head with `git ls-remote` (local HEAD must equal the remote hash), and record the verified hash in `EXECUTION_LOG.md`; on mismatch stop and reconcile from committed state, never force-push.
 - Outputs: `src/github/trees.ts`, `src/github/files.ts`, `src/github/paths.ts`, bounded fixture generators
 - Evidence produced: T-010, T-011; resource-bound output
-- Done when: both tests pass; no response presents partial data as complete; memory remains bounded under T-021 harness; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`
+- Done when: both tests pass; no response presents partial data as complete; memory remains bounded under T-021 harness; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`; and every path listed in Outputs exists, is non-empty where it is a file, passes `git diff --check`, and the evidence named in Evidence produced is recorded in `EXECUTION_LOG.md` with its validation result; and the read evidence distinguishes connector truncation from GitHub truncation and records memory-bound results
 - Checkpoint: record cap/truncation/UTF-8 evidence and commit
 - On failure: abort fixture streams and `git restore --source=HEAD --staged --worktree src/github`; do not raise caps or weaken UTF-8/path checks
 - Gate: none
@@ -167,7 +167,7 @@ completed.
 - Persistence (v3.6 Rule 6): after this step turns green, commit the changed paths with a precise message, push to the working branch, verify the remote head with `git ls-remote` (local HEAD must equal the remote hash), and record the verified hash in `EXECUTION_LOG.md`; on mismatch stop and reconcile from committed state, never force-push.
 - Outputs: `src/mcp/server.ts`, `src/mcp/tools.ts`, `src/mcp/errors.ts`, route wiring
 - Evidence produced: end-to-end evidence completing T-008…T-011 through MCP, plus T-006/T-022
-- Done when: authenticated MCP discovery and all three tools pass; unauthenticated/wrong-resource calls fail before tool execution; only three tools are listed; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`
+- Done when: authenticated MCP discovery and all three tools pass; unauthenticated/wrong-resource calls fail before tool execution; only three tools are listed; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`; and every path listed in Outputs exists, is non-empty where it is a file, passes `git diff --check`, and the evidence named in Evidence produced is recorded in `EXECUTION_LOG.md` with its validation result; and the MCP evidence records exactly three exposed tools and unauthenticated rejection
 - Checkpoint: record negotiated protocol revisions, tool list, tests, and commit
 - On failure: `git restore --source=HEAD --staged --worktree src/mcp src/server.ts`; if SDK behavior differs capture a redacted fixture and apply D-026 rather than bypassing authentication
 - Gate: none
@@ -184,7 +184,7 @@ completed.
 - Persistence (v3.6 Rule 6): after this step turns green, commit the changed paths with a precise message, push to the working branch, verify the remote head with `git ls-remote` (local HEAD must equal the remote hash), and record the verified hash in `EXECUTION_LOG.md`; on mismatch stop and reconcile from committed state, never force-push.
 - Outputs: `src/webhooks/*`, `src/jobs/retention.ts`, route wiring, migration updates if backward-compatible
 - Evidence produced: T-012, T-013, T-020; idempotent delivery/sweep output
-- Done when: all three tests pass; a revoked user's existing connector token cannot reach GitHub; duplicate delivery/sweep has no extra effect; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`
+- Done when: all three tests pass; a revoked user's existing connector token cannot reach GitHub; duplicate delivery/sweep has no extra effect; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`; and every path listed in Outputs exists, is non-empty where it is a file, passes `git diff --check`, and the evidence named in Evidence produced is recorded in `EXECUTION_LOG.md` with its validation result; and the lifecycle evidence records duplicate webhook delivery, revocation, and sweep behavior
 - Checkpoint: record webhook/retention test evidence and commit
 - On failure: stop webhook processing and `git restore --source=HEAD --staged --worktree src/webhooks src/jobs src/server.ts`; any unverified processed payload is Critical
 - Gate: none
@@ -201,7 +201,7 @@ completed.
 - Persistence (v3.6 Rule 6): after this step turns green, commit the changed paths with a precise message, push to the working branch, verify the remote head with `git ls-remote` (local HEAD must equal the remote hash), and record the verified hash in `EXECUTION_LOG.md`; on mismatch stop and reconcile from committed state, never force-push.
 - Outputs: `kimi.plugin.json`, `README.md`, `docs/github-app.md`, `docs/kimi.md`, `docs/security.md`, `LICENSE`, `SECURITY.md`
 - Evidence produced: manifest validation; documentation inputs for T-029/T-030
-- Done when: a clean reader can install/login without any PAT field or secret in the plugin; documented permissions/routes match D-008 and source; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`
+- Done when: a clean reader can install/login without any PAT field or secret in the plugin; documented permissions/routes match D-008 and source; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`; and every path listed in Outputs exists, is non-empty where it is a file, passes `git diff --check`, and the evidence named in Evidence produced is recorded in `EXECUTION_LOG.md` with its validation result; and `kimi.plugin.json` and the administrator/user documentation exist, validate, and contain no PAT or secret field
 - Checkpoint: record manifest hash, docs paths, and commit
 - On failure: `git restore --source=HEAD --staged --worktree kimi.plugin.json README.md docs LICENSE SECURITY.md`; any credential instruction other than browser OAuth must be removed before continuing
 - Gate: none
@@ -216,9 +216,9 @@ completed.
 - Inputs: T-016…T-024; Compose test stack; fixed-clock and failure fixtures
 - Actions: 1. Run the full unit/integration/security suite through real HTTP and PostgreSQL with mocked GitHub. 2. Exercise SIGTERM drain, process interruption/restart, duplicate webhooks, expired grants, and migration resume. 3. Exercise oversized bodies, slow metadata, connection exhaustion, database unavailability, and GitHub timeouts while checking liveness. 4. Save redacted operational evidence and fix only production code.
 - Persistence (v3.6 Rule 6): after this step turns green, commit the changed paths with a precise message, push to the working branch, verify the remote head with `git ls-remote` (local HEAD must equal the remote hash), and record the verified hash in `EXECUTION_LOG.md`; on mismatch stop and reconcile from committed state, never force-push.
-- Outputs: `research/results/operational.json`, `research/results/security-integration.json`, production fixes and lessons for implementer mistakes
+- Outputs: `research/results/operational.json`, `research/results/security-integration.json`, `research/results/aggregate-test-log.json`, production fixes and lessons for implementer mistakes
 - Evidence produced: T-016…T-024 as applicable
-- Done when: T-001…T-024 pass together; no skipped/expected-failure tests; restart does not replay grants or webhook effects; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`
+- Done when: T-001…T-024 pass together; no skipped/expected-failure tests; restart does not replay grants or webhook effects; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`; and every path listed in Outputs exists, is non-empty where it is a file, passes `git diff --check`, and the evidence named in Evidence produced is recorded in `EXECUTION_LOG.md` with its validation result; and `research/results/aggregate-test-log.json` records all frozen tests with zero skips or expected failures
 - Checkpoint: record aggregate test counts, failure recovery, and commit
 - On failure: preserve result JSON, retry only the failing scenario once, and `git restore --source=HEAD --staged --worktree src`; persistent security/data-integrity failure writes `BLOCKED.md`
 - Gate: none
@@ -235,7 +235,7 @@ completed.
 - Persistence (v3.6 Rule 6): after this step turns green, commit the changed paths with a precise message, push to the working branch, verify the remote head with `git ls-remote` (local HEAD must equal the remote hash), and record the verified hash in `EXECUTION_LOG.md`; on mismatch stop and reconcile from committed state, never force-push.
 - Outputs: `bench/mcp.ts`, `research/results/performance-run-{1,2,3,4,5}.json`, `research/results/performance-summary.json`
 - Evidence produced: T-025 and five-run variance report
-- Done when: aggregate and every per-tool p95 <300 ms, errors <1%, peak service memory <512 MiB, five complete workload-shaped p95 values exist, variance ≤20%, and T-025 passes; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`
+- Done when: aggregate and every per-tool p95 <300 ms, errors <1%, peak service memory <512 MiB, five complete workload-shaped p95 values exist, variance ≤20%, and T-025 passes; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`; and every path listed in Outputs exists, is non-empty where it is a file, passes `git diff --check`, and the evidence named in Evidence produced is recorded in `EXECUTION_LOG.md` with its validation result; and `research/results/performance-summary.json` contains five runs, aggregate and per-tool p95 values, error rate, peak memory, and variance on the recorded runner class
 - Checkpoint: record all measurements, tuning commits, and final result
 - On failure: apply D-028; after two unsuccessful fix attempts stop before release with `BLOCKED.md` and measurements; never discard slow runs
 - Gate: none
@@ -252,7 +252,7 @@ completed.
 - Persistence (v3.6 Rule 6): after this step turns green, commit the changed paths with a precise message, push to the working branch, verify the remote head with `git ls-remote` (local HEAD must equal the remote hash), and record the verified hash in `EXECUTION_LOG.md`; on mismatch stop and reconcile from committed state, never force-push.
 - Outputs: `.github/workflows/ci.yml`, `.github/workflows/dependency-review.yml`, `research/results/supply-chain.json`, `docs/maintenance.md`
 - Evidence produced: T-022, T-023; CI and scan results
-- Done when: CI is green, zero Critical/High production findings remain, no secret is detected, weekly schedule exists, and frozen hashes still match; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`
+- Done when: CI is green, zero Critical/High production findings remain, no secret is detected, weekly schedule exists, and frozen hashes still match; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`; and every path listed in Outputs exists, is non-empty where it is a file, passes `git diff --check`, and the evidence named in Evidence produced is recorded in `EXECUTION_LOG.md` with its validation result
 - Checkpoint: record CI run URL, scan summaries, and commit; no credentials
 - On failure: quarantine any detected credential by revocation, remove it from deliverables, and write the required lesson; `git restore --source=HEAD --staged --worktree .github src deploy`; Critical/High findings block later delivery
 - Gate: none
@@ -269,7 +269,7 @@ completed.
 - Persistence (v3.6 Rule 6): after this step turns green, commit the changed paths with a precise message, push to the working branch, verify the remote head with `git ls-remote` (local HEAD must equal the remote hash), and record the verified hash in `EXECUTION_LOG.md`; on mismatch stop and reconcile from committed state, never force-push.
 - Outputs: `deploy/docker-compose.yml`, `deploy/docker-compose.release.yml`, `deploy/Caddyfile`, `deploy/migrate.sh`, `deploy/rollback.sh`, `deploy/restore.sh`, `deploy/smoke.sh`, `research/results/staging.json`
 - Evidence produced: T-026, T-027, T-028
-- Done when: all three tests pass; Caddy preserves valid webhook HMACs and rejects altered bodies; rollback restores authenticated MCP health without resurrecting credentials/grants; alert reaches the predeclared on-call target within two minutes; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`
+- Done when: all three tests pass; Caddy preserves valid webhook HMACs and rejects altered bodies; rollback restores authenticated MCP health without resurrecting credentials/grants; alert reaches the predeclared on-call target within two minutes; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`; and every path listed in Outputs exists, is non-empty where it is a file, passes `git diff --check`, and the evidence named in Evidence produced is recorded in `EXECUTION_LOG.md` with its validation result
 - Checkpoint: record staging image digest, migration version, rollback target, alert receipt, and commit
 - On failure: apply D-030/D-032, keep production untouched, restore previous staging image, and retry at most three times before `BLOCKED.md`
 - Gate: none
@@ -286,7 +286,7 @@ completed.
 - Persistence (v3.6 Rule 6): after this step turns green, commit the changed paths with a precise message, push to the working branch, verify the remote head with `git ls-remote` (local HEAD must equal the remote hash), and record the verified hash in `EXECUTION_LOG.md`; on mismatch stop and reconcile from committed state, never force-push.
 - Outputs: `research/results/kimi-cli.json`, `research/results/kimi-web.json`, `research/results/github-installations.json`
 - Evidence produced: T-029, T-030; live installation matrix
-- Done when: both tests pass and the personal/organization × all/selected matrix matches user∩app visibility without a PAT; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`
+- Done when: both tests pass and the personal/organization × all/selected matrix matches user∩app visibility without a PAT; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`; and every path listed in Outputs exists, is non-empty where it is a file, passes `git diff --check`, and the evidence named in Evidence produced is recorded in `EXECUTION_LOG.md` with its validation result; and the live compatibility evidence (`research/results/kimi-cli.json`, `research/results/kimi-web.json`, `research/results/github-installations.json`) records the personal/organization and all/selected repository matrix
 - Checkpoint: record Kimi versions, OAuth protocol revision, installation matrix, and commit
 - On failure: capture redacted discovery/handshake evidence and apply D-026; do not substitute static tokens or claim compatibility. Revoke test grants before retry
 - Gate: none
@@ -303,7 +303,7 @@ completed.
 - Persistence (v3.6 Rule 6): after this step turns green, commit the changed paths with a precise message, push to the working branch, verify the remote head with `git ls-remote` (local HEAD must equal the remote hash), and record the verified hash in `EXECUTION_LOG.md`; on mismatch stop and reconcile from committed state, never force-push.
 - Outputs: `reviews/CODE_REVIEW.md`, linked fix commits and lessons
 - Evidence produced: review findings by severity; frozen tests after any amendments
-- Done when: no unresolved Critical/High finding, every code path has test coverage or a named rationale, and fresh-review identity is recorded; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`
+- Done when: no unresolved Critical/High finding, every code path has test coverage or a named rationale, and fresh-review identity is recorded; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`; and every path listed in Outputs exists, is non-empty where it is a file, passes `git diff --check`, and the evidence named in Evidence produced is recorded in `EXECUTION_LOG.md` with its validation result
 - Checkpoint: record reviewer independence, findings, fixes, and commit
 - On failure: return affected code to the responsible step; `git restore --source=HEAD --staged --worktree src` only before applying reviewed fixes; unresolved Critical/High blocks release
 - Gate: none
@@ -320,7 +320,7 @@ completed.
 - Persistence (v3.6 Rule 6): after this step turns green, commit the changed paths with a precise message, push to the working branch, verify the remote head with `git ls-remote` (local HEAD must equal the remote hash), and record the verified hash in `EXECUTION_LOG.md`; on mismatch stop and reconcile from committed state, never force-push.
 - Outputs: `reviews/ADVERSARIAL_REVIEW.md`, redacted exploit evidence, fixes/lessons/risks
 - Evidence produced: confirmed-break count and resolutions; amended frozen tests if required
-- Done when: zero unresolved Critical/High breaks; all Medium/Low breaks have explicit risk disposition; frozen manifest and full suite pass; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`
+- Done when: zero unresolved Critical/High breaks; all Medium/Low breaks have explicit risk disposition; frozen manifest and full suite pass; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`; and every path listed in Outputs exists, is non-empty where it is a file, passes `git diff --check`, and the evidence named in Evidence produced is recorded in `EXECUTION_LOG.md` with its validation result; and `reviews/ADVERSARIAL_REVIEW.md` records every confirmed break and disposition
 - Checkpoint: record attacks, confirmed breaks, fixes, residual risks, and commit
 - On failure: isolate vulnerable routes and return to the earliest responsible step; any credential/source exposure triggers revocation and `BLOCKED.md`
 - Gate: none
@@ -337,7 +337,7 @@ completed.
 - Persistence (v3.6 Rule 6): after this step turns green, commit the changed paths with a precise message, push to the working branch, verify the remote head with `git ls-remote` (local HEAD must equal the remote hash), and record the verified hash in `EXECUTION_LOG.md`; on mismatch stop and reconcile from committed state, never force-push.
 - Outputs: `reviews/MUTATION.md`, `reports/mutation/*`, amendment records if any
 - Evidence produced: mutation score and survivor disposition
-- Done when: score ≥85%, every survivor has a test or written justification, and full frozen suite passes; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`
+- Done when: score ≥85%, every survivor has a test or written justification, and full frozen suite passes; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`; and every path listed in Outputs exists, is non-empty where it is a file, passes `git diff --check`, and the evidence named in Evidence produced is recorded in `EXECUTION_LOG.md` with its validation result; and `reviews/MUTATION.md` records the score and every survivor class or justification
 - Checkpoint: record score, mutant classes, amendments, and commit
 - On failure: never raise thresholds or exclude modules to pass; restore temporary mutation artifacts and return meaningful survivors to the responsible implementation step
 - Gate: none
@@ -354,7 +354,7 @@ completed.
 - Persistence (v3.6 Rule 6): after this step turns green, commit the changed paths with a precise message, push to the working branch, verify the remote head with `git ls-remote` (local HEAD must equal the remote hash), and record the verified hash in `EXECUTION_LOG.md`; on mismatch stop and reconcile from committed state, never force-push.
 - Outputs: `release/kimi-code-github-app-0.1.0.zip`, `release/SHA256SUMS`, `CHANGELOG.md`, `RELEASE_CANDIDATE.md`, `GATE-G-002.md` draft
 - Evidence produced: candidate hashes and final verification counts; no external release
-- Done when: candidate hashes reproduce, every required artifact is present, and all required tests/scans/reviews pass on the same commit; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`
+- Done when: candidate hashes reproduce, every required artifact is present, and all required tests/scans/reviews pass on the same commit; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`; and every path listed in Outputs exists, is non-empty where it is a file, passes `git diff --check`, and the evidence named in Evidence produced is recorded in `EXECUTION_LOG.md` with its validation result
 - Checkpoint: record candidate commit/digests, evidence bundle, and commit
 - On failure: delete only `release/` outputs and rebuild after correction; any new code change returns to S-REVIEW
 - Gate: none
@@ -371,7 +371,7 @@ completed.
 - Persistence (v3.6 Rule 6): after this step turns green, commit the changed paths with a precise message, push to the working branch, verify the remote head with `git ls-remote` (local HEAD must equal the remote hash), and record the verified hash in `EXECUTION_LOG.md`; on mismatch stop and reconcile from committed state, never force-push.
 - Outputs: `GATE-G-002.md`, production release record, git tag/GitHub release only after approval, deployment provenance
 - Evidence produced: production deployment and public-release result, or documented no-action branch
-- Done when: approved production is healthy and the exact candidate is publicly released, or the gate's non-proceed branch is fully recorded; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`
+- Done when: approved production is healthy and the exact candidate is publicly released, or the gate's non-proceed branch is fully recorded; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`; and every path listed in Outputs exists, is non-empty where it is a file, passes `git diff --check`, and the evidence named in Evidence produced is recorded in `EXECUTION_LOG.md` with its validation result
 - Checkpoint: record gate response, release ID/digest/tag if any, and deployment commit
 - On failure: execute `./deploy/rollback.sh "$PREVIOUS_RELEASE_ID"` per D-030/D-031, do not publish or withdraw to an unverified state, and halt with incident evidence
 - Gate: G-002
@@ -388,7 +388,7 @@ completed.
 - Persistence (v3.6 Rule 6): after this step turns green, commit the changed paths with a precise message, push to the working branch, verify the remote head with `git ls-remote` (local HEAD must equal the remote hash), and record the verified hash in `EXECUTION_LOG.md`; on mismatch stop and reconcile from committed state, never force-push.
 - Outputs: `RELEASE_VERIFICATION.md`, `OPERATIONS_HANDOVER.md`
 - Evidence produced: post-release measurements and alert/revocation evidence
-- Done when: every check passes for 60 minutes or a non-proceed G-002 branch is accurately marked N/A; no D-031/D-032 condition remains; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`
+- Done when: every check passes for 60 minutes or a non-proceed G-002 branch is accurately marked N/A; no D-031/D-032 condition remains; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`; and every path listed in Outputs exists, is non-empty where it is a file, passes `git diff --check`, and the evidence named in Evidence produced is recorded in `EXECUTION_LOG.md` with its validation result; and `RELEASE_VERIFICATION.md` records the 60-minute checks, alert result, and revocation result
 - Checkpoint: record verification timestamps, owner, and final release state
 - On failure: roll back immediately using the runbook, halt public rollout, and record an incident plus lessons; do not suppress alerts
 - Gate: none
@@ -405,7 +405,7 @@ completed.
 - Persistence (v3.6 Rule 6): after this step turns green, commit the changed paths with a precise message, push to the working branch, verify the remote head with `git ls-remote` (local HEAD must equal the remote hash), and record the verified hash in `EXECUTION_LOG.md`; on mismatch stop and reconcile from committed state, never force-push.
 - Outputs: `RETROSPECTIVE.md`, new lessons/knowledge as required
 - Evidence produced: retrospective findings and L/K links
-- Done when: every finding links to an L/K file and all entry schemas and secret scans pass; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`
+- Done when: every finding links to an L/K file and all entry schemas and secret scans pass; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`; and every path listed in Outputs exists, is non-empty where it is a file, passes `git diff --check`, and the evidence named in Evidence produced is recorded in `EXECUTION_LOG.md` with its validation result; and `RETROSPECTIVE.md` records every finding, its L/K links, and the deviation-diff result
 - Checkpoint: record retrospective completion and new L/K IDs
 - On failure: supplement missing records only; do not rerun implementation or alter release artifacts to improve the narrative
 - Gate: none
@@ -422,7 +422,7 @@ completed.
 - Persistence (v3.6 Rule 6): after this step turns green, commit the changed paths with a precise message, push to the working branch, verify the remote head with `git ls-remote` (local HEAD must equal the remote hash), and record the verified hash in `EXECUTION_LOG.md`; on mismatch stop and reconcile from committed state, never force-push.
 - Outputs: `GATE-G-003.md`, knowledge-store commits/indexes or local bundle fallback
 - Evidence produced: push/index result, explicit do-not-push result, or bundle path
-- Done when: push and indexes succeed, do-not-push is recorded, or bundle fallback is written and reported; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`
+- Done when: push and indexes succeed, do-not-push is recorded, or bundle fallback is written and reported; and the green commit was pushed and remote-verified with `git ls-remote` (local HEAD == remote HEAD), with the verified hash recorded in `EXECUTION_LOG.md`; and every path listed in Outputs exists, is non-empty where it is a file, passes `git diff --check`, and the evidence named in Evidence produced is recorded in `EXECUTION_LOG.md` with its validation result
 - Checkpoint: record final L/K disposition and close the run
 - On failure: never include secrets or force-push; follow the three-retry/bundle rule and preserve all local entries
 - Gate: G-003
