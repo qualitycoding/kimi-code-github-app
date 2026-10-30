@@ -62,6 +62,7 @@ Falsification evidence was checked against the claim register, official-source r
 | D-031 | Post-release health rules detect failure and roll back safely. | Real monitoring/rollback failure would falsify operational effectiveness. Thresholds and command checked; production behavior not executed. | unverifiable | R-010; S-019; T-027/T-028. |
 | D-032 | Alert delivery is proven before deployment completes. | A synthetic alert not reaching on-call would falsify readiness. Two-minute rule and T-028 checked; no channel execution exists. | unverifiable | R-010; S-014/S-019. |
 | D-033 | The default reversible fork rule prevents improvisation on protected surfaces. | A deviation path allowing silent security/data/public-interface changes would falsify it. HANDOFF, BLOCKED/DEVIATIONS rules checked. | confirmed | S-000 and every On-failure field. |
+| D-034 | A plan-only v3.6 amendment closes every protocol finding without changing architecture, frozen tests, or the connector scope, under a conservative `ephemeral` environment classification. | An amendment that silently weakened a test criterion, skipped a finding, or claimed verification without evidence would falsify it. All ten amendment steps executed with per-step remote-verified pushes; verifier extended for v3.6 and passing. | confirmed | `plan/amendment-v36/` execution log and probe; `research/spikes/v36-command-verification/`; findings C-01, H-01…H-04, M-01…M-05. |
 
 ## Frozen-test premises
 

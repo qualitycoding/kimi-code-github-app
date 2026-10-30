@@ -103,3 +103,23 @@ The amendment plan itself is preserved at `plan/amendment-v36/AMENDMENT_V36_PLAN
   Output, and its `Done when` includes a successful deviation-diff with zero unlogged
   substitutions.
 - Next step: S-AMEND-007.
+
+## 2026-10-30T22:14:00Z — S-AMEND-007 — attempt 1 — pass
+
+- `research/spikes/verify_planning.py` extended for protocol v3.6. New checks:
+  H-02 environment class in PROFILE + state; H-01 Rule 6 cadence in HANDOFF/PLAN, per-step
+  `Persistence (v3.6 Rule 6)` action and remote-HEAD `Done when` clause (all 24 steps);
+  C-01 universal artifact clause (24 steps) + 17 specific postcondition markers;
+  H-03 evidence matrix rows all carry an evidence class or `blocked-unverified`;
+  H-04 runner class `linux-x86_64-2vCPU-4GiB-fuse.portal` and runner-class-specificity rule;
+  ephemeral restaging/container-loss rules per step; M-02 S-RETRO deviation-diff procedure
+  and `reviews/RETRO_DEVIATION_DIFF.md`; M-03 immediate deviation logging (HANDOFF + six
+  substitution-capable steps); M-01 stale push item removed and verified remote head
+  recorded; M-04 failure-swallowing idiom scan over plan-specified `sh` commands;
+  M-05 dynamic L/K count (32) and dynamic risk/audit header-vs-register cross-checks.
+- `premortem/ASSUMPTION_AUDIT.md` gained the D-034 row (confirmed); PLAN.md header audit
+  line updated to 79 items — 64/0/15 to stay consistent (S-AMEND-008 will complete the
+  remaining review updates).
+- Verifier output: `all mechanical checks valid (v3.4 + v3.6): 24 steps, 30 tests, 23
+  claims, 32 L/K entries` — exit 0 (recorded in `plan/amendment-v36/verifier-v36-output.txt`).
+- Next step: S-AMEND-008.

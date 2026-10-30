@@ -1,0 +1,2 @@
+all mechanical checks valid (v3.4 + v3.6): 24 steps, 30 tests, 23 claims, 32 L/K entries
+verifier exit: 0

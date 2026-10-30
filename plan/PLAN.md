@@ -6,7 +6,7 @@ Claims: 23 total — 21 corroborated, 2 verified.
 Tests: 30 total — 7 OAuth unit, 8 repository integration, 6 operational, 3 security, 1 performance, 5 deployment/live-surface.
 Steps: 24. Gates: 2 (G-002, G-003).
 Risks: 15 total — 1 Critical mitigated, 6 High mitigated, 7 Medium residual/verification, 1 Low accepted/mitigated; 0 unresolved Critical/High.
-Assumption audit: 78 items — 63 confirmed, 0 falsified, 15 unverifiable with linked risks/tests.
+Assumption audit: 79 items — 64 confirmed, 0 falsified, 15 unverifiable with linked risks/tests.
 Code-review findings by severity: NOT RUN — no zero-finding claim. Adversarial breaks: NOT RUN — no zero-break claim. Mutation score: NOT RUN — no score claimed.
 
 ## Protocol v3.6 persistence rule (Global Rule 6)
