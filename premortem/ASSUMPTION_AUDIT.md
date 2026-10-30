@@ -103,7 +103,7 @@ The red run proves clean failure against stubs, not functional behavior. `Confir
 
 ## Verdict totals and iteration
 
-- Items audited: 78 = 15 assumptions +33 decision premises +30 frozen-test premises.
+- Items audited: 79 = 15 assumptions +34 decision premises (incl. amendment decision D-034) +30 frozen-test premises.
 - `confirmed`: 63.
 - `falsified`: 0.
 - `unverifiable`: 15 (A-001/A-008; D-002/D-019/D-021/D-022/D-030/D-031/D-032; T-025…T-030).

@@ -55,3 +55,23 @@
 ## Test freeze and amendment
 
 `tests/FROZEN_MANIFEST.sha256` covers every test file. `tests/RED_VERIFICATION.txt` records the clean 30-test red run. Implementation may change stubs and add production code, but may not modify, skip, mark expected-failure, or weaken frozen tests. A test challenge starts at the earliest affected research/claim row above, then re-runs red verification, freeze, cold read, and pre-mortem on changed steps. Math, computational, publication, figure, and manuscript artifacts are N/A and are not required by any row.
+
+## Protocol v3.6 amendment traceability
+
+Amendment decision: **D-034** (`plan/DECISIONS.md`) — plan-only amendment under protocol
+v3.6; architecture, frozen tests, and connector scope unchanged; environment conservatively
+classified `ephemeral`. The amendment closes findings C-01, H-01…H-04, M-01…M-05 and
+leaves one human-decision item: `node:24.22.1-trixie-slim` exact-tag existence is
+`blocked-unverified` from the amendment sandbox, so the plan status is
+`BLOCKED — HUMAN DECISION REQUIRED` until S-000 resolves it on the implementation host.
+
+| Amendment evidence | Where recorded | Verifies |
+|---|---|---|
+| Environment probe and ephemeral classification | `plan/amendment-v36/ENVIRONMENT_PROBE.md`; `plan/PROFILE.md` | H-02, M-05 |
+| Per-step remote-verified execution record | `plan/amendment-v36/EXECUTION_LOG.md` (one entry per step, commit + verified remote head) | H-01, M-01 |
+| Substitution log (incl. human-directed authentication exception) | `plan/amendment-v36/DEVIATIONS.md` | M-02, M-03 |
+| Command/pin evidence matrix and runner class | `research/spikes/v36-command-verification/README.md`, `output.txt`; `plan/ENVIRONMENT.md` | H-03, H-04 |
+| Artifact postconditions in all 24 steps | `plan/PLAN.md` `Done when` fields | C-01 |
+| v3.6 mechanical verifier and passing output | `research/spikes/verify_planning.py`; `plan/amendment-v36/verifier-v36-output.txt` | M-04 |
+| Amendment review, pre-mortem round 3, risk additions | `reviews/COLD_READ.md`; `premortem/round-3.md`; R-016/R-017/R-018 in `premortem/RISK_REGISTER.md` | C-01, H-01…M-05 closure |
+| Checkpoint state (stale push item removed, remote head verified) | `.checkpoints/state.json` | M-01 |

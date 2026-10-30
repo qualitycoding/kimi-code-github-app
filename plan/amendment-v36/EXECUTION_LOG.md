@@ -123,3 +123,22 @@ The amendment plan itself is preserved at `plan/amendment-v36/AMENDMENT_V36_PLAN
 - Verifier output: `all mechanical checks valid (v3.4 + v3.6): 24 steps, 30 tests, 23
   claims, 32 L/K entries` — exit 0 (recorded in `plan/amendment-v36/verifier-v36-output.txt`).
 - Next step: S-AMEND-008.
+
+## 2026-10-30T22:30:00Z — S-AMEND-008 — attempt 1 — pass
+
+- `reviews/COLD_READ.md`: v3.6 cold-read record added — actual current L/K count 32,
+  no fresh-context subagent tool available, no independent semantic cold read claimed.
+- `premortem/round-3.md`: adversarial re-simulation of the changed persistence, ephemeral,
+  verification, and amendment rules; zero unresolved Critical/High.
+- `premortem/RISK_REGISTER.md`: R-016 (High, blocked node tag → mitigated by BLOCKED
+  status + S-000 gate), R-017 (Medium, environment misclassification), R-018 (Medium,
+  mechanically-satisfied-but-semantically-vacant evidence). Header counts now 18 total —
+  1C/7H/9M/1L, 0 unresolved Critical/High.
+- `premortem/ASSUMPTION_AUDIT.md`: D-034 row added (confirmed); totals 79 items — 64/0/15.
+- `plan/TRACEABILITY.md`: amendment decision D-034 and the amendment evidence matrix added.
+- `plan/PLAN.md` header: truthful v3.6 status `BLOCKED — HUMAN DECISION REQUIRED` (single
+  blocked-unverified item: `node:24.22.1-trixie-slim` exact-tag existence); risk counts
+  updated to match the register.
+- Verifier re-run: exit 0 (`all mechanical checks valid (v3.4 + v3.6): 24 steps, 30 tests,
+  23 claims, 32 L/K entries`).
+- Next step: S-AMEND-009.
