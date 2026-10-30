@@ -89,3 +89,17 @@ The amendment plan itself is preserved at `plan/amendment-v36/AMENDMENT_V36_PLAN
   probe recorded in `ENVIRONMENT_VERIFICATION.md`, durable-mount discipline, runtime
   restaging, and blocked-tool behavior (BLOCKED.md, no version/credential substitution).
 - Next step: S-AMEND-006.
+
+## 2026-10-30T22:00:00Z — S-AMEND-006 — attempt 1 — pass
+
+- `HANDOFF.md` deviation rule now requires every substitution to be logged in
+  `DEVIATIONS.md` at the moment it is made, with the full entry schema; an unlogged
+  substitution is itself a deviation.
+- Substitution-capable steps (S-000, S-001, S-012, S-013, S-014, S-017) gained an explicit
+  `Deviations (v3.6)` action: append `DEVIATIONS.md` before continuing.
+- S-RETRO gained the deviation-diff procedure (`git diff --stat <baseline>..HEAD`,
+  `git log --oneline --name-only <baseline>..HEAD`, package/pin/timeout/config changes;
+  fail on any unlogged substitution), requires `reviews/RETRO_DEVIATION_DIFF.md` as an
+  Output, and its `Done when` includes a successful deviation-diff with zero unlogged
+  substitutions.
+- Next step: S-AMEND-007.
