@@ -1,0 +1,83 @@
+v36-command-verification spike — raw probe output
+Run: 2026-10-30T21:20:00Z (UTC) — amendment step S-AMEND-002
+Runner: Linux x86_64, 2 vCPU, 4 GiB, /mnt/agents on fuse.portal, Git 2.39.5, Python 3.12.12
+
+== Local tool availability ==
+$ command -v docker
+NO_DOCKER (no Docker daemon/CLI in this sandbox)
+
+== Registry reachability ==
+$ curl https://hub.docker.com/v2/ / https://auth.docker.io/ / https://registry-1.docker.io/v2/
+000 (connection failed) for all three Docker Hub endpoints
+$ curl https://pypi.org/simple/ -> 200 ; https://nodejs.org/dist/ -> 200
+Docker Hub is unreachable from this sandbox; GitHub API, nodejs.org, and npm registry are reachable.
+
+== Node.js 24.22.1 upstream release ==
+$ curl -s -o /dev/null -w "%{http_code}" https://nodejs.org/dist/v24.22.1/
+200
+$ curl -s https://nodejs.org/dist/v24.22.1/SHASUMS256.txt | grep linux-x64.tar.xz
+6c172a9ab6718f7b801fb5a7bd486af2ee5e32758086a04b84fcce2aa77095e6  node-v24.22.1-linux-x64.tar.xz
+=> Matches the SHA-256 pinned in plan/ENVIRONMENT.md exactly.
+
+== Docker Engine 29.9.2 ==
+Official locator: https://docs.docker.com/engine/release-notes/29/ lists "29.9.2" (2026-10-20).
+Also shipped in Docker Desktop 4.96.1 (2026-10-21, https://docs.docker.com/desktop/release-notes/).
+
+== Docker Compose 5.6.1 ==
+$ gh api repos/docker/compose/releases/tags/v5.6.1 (GitHub API)
+tag_name: v5.6.1  published_at: 2026-10-21T07:54:18Z
+https://github.com/docker/compose/releases/tag/v5.6.1
+
+== Caddy 2.11.7 ==
+endoflife.date/caddy: 2.11.7 is the latest supported release (released 2026-10-03).
+
+== PostgreSQL 18.6 ==
+PostgreSQL 18.6 documentation: "Release date: 2026-08-13".
+
+== Kimi Code CLI / kimi web 2.3.3 ==
+$ curl https://registry.npmjs.org/@moonshot-ai%2fkimi-code
+name: @moonshot-ai/kimi-code
+dist-tags: latest=2.4.1, canary=2.5.0-canary.20261030040529-bd0d4de
+version 2.3.3 present: True
+(npm package "kimi-code" and "kimi-cli" also exist; @moonshot-ai/kimi-code is the scoped
+distribution; the legacy github.com/MoonshotAI/kimi-cli repo is archived and unrelated.)
+
+== Container tags — docker-library/official-images master (HEAD 2026-10-30T20:21:07Z) ==
+$ official-images/library/caddy:
+Tags: 2.11.7-alpine, 2.11-alpine, 2-alpine, alpine
+Architectures: amd64, arm64v8, arm32v6, arm32v7, ppc64le, riscv64, s390x
+GitCommit: 9234f5785658cae8129bfae366e196d0670468ac  Directory: 2.11/alpine
+=> caddy:2.11.7-alpine VERIFIED (amd64 supported)
+
+$ official-images/library/postgres:
+Tags: 18.6, 18, latest, 18.6-trixie, 18-trixie, trixie
+Architectures: amd64, arm32v5, arm32v7, arm64v8, i386, ppc64le, riscv64, s390x
+GitCommit: e00e1bd34ec5c8a8e7ad89b273b3d42efaf6d5bc  Directory: 18/trixie
+=> postgres:18.6-trixie VERIFIED (amd64 supported)
+
+$ official-images/library/node:
+Current supported 24.x entries (verbatim):
+Tags: 24-trixie, 24.22-trixie, 24.22.2-trixie, krypton-trixie
+Tags: 24-trixie-slim, 24.22-trixie-slim, 24.22.2-trixie-slim, krypton-trixie-slim
+(plus 24-alpine3.23/3.24 and 24-bookworm[-slim] entries at 24.22.2)
+=> node:24.22.1-trixie-slim is NOT in the current supported manifest; the 24.x line is at
+   24.22.2. The tag may persist on the Docker Hub registry but that cannot be proven from
+   this sandbox (registry unreachable). Upstream Node v24.22.1 release IS verified via
+   nodejs.org (dist 200 + exact SHASUMS256 match).
+=> node:24.22.1-trixie-slim = blocked-unverified until `docker buildx imagetools inspect`
+   proves exact-tag existence at S-000; if unavailable, S-000 blocks per D-019.
+
+== Runner class definition ==
+Runner class: linux-x86_64-2vCPU-4GiB-fuse.portal
+Rule: benchmark evidence valid only on this recorded class or a later explicitly approved
+class (see README.md).
+
+== Verdict ==
+VERIFIED: node archive checksum, Docker Engine 29.9.2, Docker Compose 5.6.1, Caddy 2.11.7,
+PostgreSQL 18.6, Kimi Code CLI 2.3.3 (@moonshot-ai/kimi-code), caddy:2.11.7-alpine,
+postgres:18.6-trixie, api.github.com origin.
+BLOCKED-UNVERIFIED: node:24.22.1-trixie-slim exact-tag existence; `kimi web --help` and all
+S-000 host preflight commands (no implementation host in this sandbox); immutable image
+digests (resolved at S-000 with a live daemon).
+Consequence per S-AMEND-002: the v3.6 plan status stays BLOCKED — HUMAN DECISION REQUIRED
+until S-000 resolves the node tag (and Kimi surface) on the implementation host.

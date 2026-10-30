@@ -29,3 +29,25 @@ The amendment plan itself is preserved at `plan/amendment-v36/AMENDMENT_V36_PLAN
   removed; verified remote head `8068f965135ffefc0094ce25ce50dce0395a8efd` recorded;
   active step set to `S-AMEND-002`; artifact hashes refreshed for changed files.
 - Next step: S-AMEND-002.
+
+## 2026-10-30T21:26:00Z — S-AMEND-002 — attempt 1 — pass (with blocked-unverified items)
+
+- Created `research/spikes/v36-command-verification/README.md` and `output.txt`: full
+  command/pin evidence matrix for every literal command and pinned version in
+  `plan/PLAN.md` and `plan/ENVIRONMENT.md`.
+- VERIFIED: Node archive SHA-256 exact match against nodejs.org SHASUMS256; Docker Engine
+  29.9.2 (docs.docker.com); Docker Compose 5.6.1 (GitHub release 2026-10-21); Caddy 2.11.7;
+  PostgreSQL 18.6; Kimi Code CLI 2.3.3 (npm `@moonshot-ai/kimi-code`); container tags
+  `caddy:2.11.7-alpine` and `postgres:18.6-trixie` (official-images manifest, amd64,
+  GitCommits recorded).
+- BLOCKED-UNVERIFIED: `node:24.22.1-trixie-slim` exact-tag existence (Docker Hub registry
+  unreachable from this sandbox; tag superseded by 24.22.2 in the current supported
+  manifest; upstream Node v24.22.1 release itself verified). Immutable image digests and
+  `kimi web --help` require the S-000 implementation host.
+- Runner class defined and recorded: `linux-x86_64-2vCPU-4GiB-fuse.portal`; benchmark
+  evidence is runner-class-specific.
+- `plan/ENVIRONMENT.md` updated with the evidence matrix and runner class.
+- Consequence recorded in the spike and `plan/ENVIRONMENT.md`: the final connector plan
+  status must remain `BLOCKED — HUMAN DECISION REQUIRED` under v3.6 until S-000 resolves
+  the node tag on the implementation host.
+- Next step: S-AMEND-003.

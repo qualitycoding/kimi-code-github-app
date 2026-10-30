@@ -59,6 +59,30 @@ These are preflight requirements for S-000 and staging, not claims that the plan
 
 All three container tags must be resolved to immutable `image@sha256:...` references with `docker buildx imagetools inspect`; an unavailable exact tag blocks S-000 rather than permitting substitution. Every Dockerfile, Compose file, scan, and release candidate uses the recorded digests.
 
+### Amendment v3.6 command/pin evidence matrix and runner class (S-AMEND-002)
+
+Full evidence: `research/spikes/v36-command-verification/README.md` and `output.txt`
+(run 2026-10-30T21:20:00Z). Summary:
+
+| Item | Pin | Evidence | Result |
+|---|---|---|---|
+| Node.js archive | v24.22.1 linux-x64 + SHA-256 `6c172a9a…95e6` | nodejs.org dist + SHASUMS256 | VERIFIED (checksum exact match) |
+| npm | 11.19.1 | planner spike (bundled) | planner-verified; rechecked on restaging |
+| Docker Engine | 29.9.2 | docs.docker.com engine release notes (2026-10-20) | VERIFIED |
+| Docker Compose | 5.6.1 | docker/compose GitHub release v5.6.1 (2026-10-21) | VERIFIED |
+| Caddy | 2.11.7 | Caddy release stream (2026-10-03) | VERIFIED |
+| PostgreSQL | 18.6 | PostgreSQL 18.6 release (2026-08-13) | VERIFIED |
+| Kimi Code CLI / `kimi web` | 2.3.3 | npm `@moonshot-ai/kimi-code` 2.3.3 exists | VERIFIED (binary/`--help` check at S-000) |
+| `caddy:2.11.7-alpine` | exact tag | official-images manifest, amd64, GitCommit `9234f578…` | VERIFIED (digest at S-000) |
+| `postgres:18.6-trixie` | exact tag | official-images manifest, amd64, GitCommit `e00e1bd3…` | VERIFIED (digest at S-000) |
+| `node:24.22.1-trixie-slim` | exact tag | blocked-unverified | Docker Hub unreachable here; superseded in supported manifest (24.22.2); must be proven with `docker buildx imagetools inspect` at S-000 or S-000 blocks |
+| Ubuntu 24.04 host | host pin | blocked-unverified | no implementation host in planning/amendment sandbox; preflight at S-000 |
+
+Benchmark runner class: `linux-x86_64-2vCPU-4GiB-fuse.portal` (observed planner/amendment
+environment; probe `plan/amendment-v36/ENVIRONMENT_PROBE.md`). Release benchmark evidence is
+valid only on this recorded runner class or a later runner class explicitly approved by a
+decision entry; benchmark targets are runner-class-specific.
+
 S-000 must run and record:
 
 ```sh
