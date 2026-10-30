@@ -142,3 +142,34 @@ The amendment plan itself is preserved at `plan/amendment-v36/AMENDMENT_V36_PLAN
 - Verifier re-run: exit 0 (`all mechanical checks valid (v3.4 + v3.6): 24 steps, 30 tests,
   23 claims, 32 L/K entries`).
 - Next step: S-AMEND-009.
+
+## 2026-10-30T22:40:00Z — S-AMEND-009 — attempt 1 — pass — AMENDMENT HANDOFF (final)
+
+Final validation, all results recorded:
+
+1. Resumption checks: local HEAD `19374236f02883f4b3fa4041f5ac7534b7fa6280` ==
+   remote head `19374236f02883f4b3fa4041f5ac7534b7fa6280` at validation time.
+2. `git diff --check` → exit 0.
+3. `python3 research/spikes/verify_planning.py` → exit 0:
+   `all mechanical checks valid (v3.4 + v3.6): 24 steps, 30 tests, 23 claims, 32 L/K entries`.
+4. `sha256sum -c tests/FROZEN_MANIFEST.sha256` → exit 0 (all six frozen test files OK).
+5. Full-tree secret scan (verifier patterns: `github_pat_`, `ghp_`, `AKIA`, PEM private
+   keys) → no hits in any artifact.
+6. `git diff --name-only f4305b0..HEAD -- tests/` → empty; no frozen test was edited,
+   skipped, weakened, or deleted; the frozen-test manifest is unchanged.
+7. `.checkpoints/state.json` shows the amendment complete (`active_step_id: S-AMEND-009`,
+   `premortem_round: 3`, no pending external push, recorded verified remote head).
+8. `plan/PLAN.md` header truthfully reports
+   `Status: BLOCKED — HUMAN DECISION REQUIRED` under v3.6: every amendment check is green
+   except the single blocked-unverified item (`node:24.22.1-trixie-slim` exact-tag
+   existence, to be resolved by `docker buildx imagetools inspect` at S-000 on the
+   implementation host, or by formal human-directed re-pin).
+9. Working tree clean on the generation branch; every amendment step was committed, pushed,
+   and `ls-remote`-verified at the time it turned green (see per-step entries above).
+
+Human decision items carried forward: (a) resolve or re-pin `node:24.22.1-trixie-slim` at
+S-000; (b) revoke the planning/amendment credential that was pasted into chat
+(R-015) — no credential value exists in any committed artifact.
+
+Amendment workflow terminates here per protocol: no connector implementation step, no
+deployment, no release, no publication, and no knowledge push was executed.
