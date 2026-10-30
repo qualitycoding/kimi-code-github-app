@@ -9,8 +9,8 @@
     "software.deploys": true
   },
   "phase": "5",
-  "subphase": "5.3-local-bundle-fallback",
-  "active_step_id": "external-push-authentication-required",
+  "subphase": "amendment-v3.6",
+  "active_step_id": "S-AMEND-002",
   "research_round": 5,
   "exploration_round": 0,
   "proof_review_round": 0,
@@ -38,11 +38,10 @@
     "5.2-final-consistency-check",
     "5.3-final-commit",
     "5.3-push-attempts-exhausted",
-    "5.3-local-bundle-fallback"
+    "5.3-local-bundle-fallback",
+    "external-generation-branch-push-authentication-resolved"
   ],
-  "pending": [
-    "external-generation-branch-push-requires-authentication"
-  ],
+  "pending": [],
   "not_applicable": [
     "math",
     "computational",
@@ -85,12 +84,12 @@
     "package-lock.json": "927c410ba84d91e318ff54c3b503b8898f17976f862db565d857e315d4f72944",
     "package.json": "7ed68ee7185fb478ef7de10c6daf9c9e7f47dae02710c82ae39f3c9c2d43d21d",
     "plan/ASSUMPTIONS.md": "b0aeefc2c1bfd848075e0bff44e22f58d2c3d8439a259d6b06eff2524063cae4",
-    "plan/DECISIONS.md": "455d9ff86e60cbd3b50d9d40cef297e1a40ba5cc02b2bcf4456227a92bcebf1a",
+    "plan/DECISIONS.md": "9062a632fa549f9d688d95b76cb9c7d7e6b5234d7576c8ff308351c88e215946",
     "plan/ENVIRONMENT.md": "680c829e513af05e7a7b548f600221ed4f4d1369f852220dab2787cb770c9b2e",
     "plan/GATES.md": "9a1f039a879e8f937fcfd5f1bbe9c88041eb3d7f1f8c43e9bad912d389cfbaf8",
     "plan/OPERATIONS.md": "1e244a41bd420bf42d1eb660f342103184e46095fcab9ccc5db478d2153ca8fc",
     "plan/PLAN.md": "32077e4aee12187b8b5fe33a9fa50f546ea0fbebcf2e858de03bf4eadd1fcebb",
-    "plan/PROFILE.md": "938ff28f486d1902a8a5f9e6d276ff89859471ff327516e99ab28faeaf9e6616",
+    "plan/PROFILE.md": "7dd0ab5c4a0ae98ec59d69262077deb86fe6e2f24d4d4c9400d80b23385e0eba",
     "plan/TRACEABILITY.md": "6de0dc46ff68bebdd6c536c67a35d56b2e4ec08a4907c7e2cee51ffeb62990c6",
     "premortem/ASSUMPTION_AUDIT.md": "857e912d75900244411763d572bcb9b6e0632aaa82b77c49317e23093f5460fe",
     "premortem/RISK_REGISTER.md": "9b30fc58b0592867e46955d9ca5e5ddd6417b2b526555b1c9202764bb4b413b1",
@@ -125,7 +124,11 @@
     "tests/repository-integration.test.ts": "508d04dc460913485351cdcac61bd42c4bfe9de804d9078ab41e14c30f7a8d95",
     "tests/security.test.ts": "3ee148b015efd9ed0ee7822d795be45a42b3752c6a06534ecb2f7eeb062da3c5",
     "tsconfig.json": "c6b34a383a87ec7b9da5e149b93c500cf3b59f1540cb1df00dc951762d1114ff",
-    "lessons/L-20261029T004636Z-final-push-preflight.md": "d3cc42512a2702a772d17a54fdc9b92aeabd00882b62da9ed7b8424479113087"
+    "lessons/L-20261029T004636Z-final-push-preflight.md": "d3cc42512a2702a772d17a54fdc9b92aeabd00882b62da9ed7b8424479113087",
+    "plan/amendment-v36/EXECUTION_LOG.md": "226a7a69eeb483e4499468cc95a447cce2128304ce55740d8306547ec51150df",
+    "plan/amendment-v36/DEVIATIONS.md": "48303b23a1c5fcd7e2de65802f0382761b56dc6cdbfe92353168139429021b1f",
+    "plan/amendment-v36/ENVIRONMENT_PROBE.md": "5a5d5611c01c8a0609fd1ba18fa3fd7a9deb65f42b07a3735a599ad5e79bb868",
+    "plan/amendment-v36/AMENDMENT_V36_PLAN.md": "ae4c2be9d4d16e3183f03d60939fe72db61aba90e98ef04a044bbba9fe268653"
   },
   "execution_context": {
     "current_objective": "Produce a zero-question, test-first implementation plan for a GitHub App and OAuth-protected remote MCP server packaged as a Kimi Code plugin.",
@@ -167,7 +170,7 @@
     "resolved_questions": [
       "Target repository supplied",
       "Knowledge store exists and is readable",
-      "All planning ambiguities resolved through A-001…A-015"
+      "All planning ambiguities resolved through A-001\u2026A-015"
     ],
     "candidate_decisions": [],
     "uncommitted_drafts": {},
@@ -184,7 +187,7 @@
   ],
   "open_items": [
     "R-007: fresh independent implementation reviews remain mandatory for G-002.",
-    "R-008…R-011: live/deployment/benchmark/mutation outcomes remain implementation evidence.",
+    "R-008\u2026R-011: live/deployment/benchmark/mutation outcomes remain implementation evidence.",
     "R-015: user must revoke the exposed planning credential after the planning push.",
     "External generation-branch push remains blocked by authentication; verified local bundle is the protocol fallback."
   ],
@@ -230,5 +233,9 @@
     "K-20261029T000022Z-c-022-connector-research",
     "K-20261029T000023Z-c-023-connector-research"
   ],
-  "updated_at": "2026-10-29T00:47:30Z"
+  "updated_at": "2026-10-29T00:47:30Z",
+  "environment_class": "ephemeral",
+  "environment_probe": "plan/amendment-v36/ENVIRONMENT_PROBE.md",
+  "verified_remote_head": "8068f965135ffefc0094ce25ce50dce0395a8efd",
+  "amendment_decision": "D-034"
 }

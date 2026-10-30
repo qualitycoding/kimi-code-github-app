@@ -17,3 +17,15 @@ The amendment plan itself is preserved at `plan/amendment-v36/AMENDMENT_V36_PLAN
   `sha256sum -c tests/FROZEN_MANIFEST.sha256` → exit 0 (6/6 OK).
 - Deviation D-AMEND-001 recorded (human-directed PAT authentication for this run).
 - Next step: S-AMEND-001.
+
+## 2026-10-30T20:56:00Z — S-AMEND-001 — attempt 1 — pass
+
+- Added D-034 to `plan/DECISIONS.md`: protocol v3.6 requires a plan-only amendment;
+  connector architecture unchanged; amendment environment conservatively classified
+  `ephemeral`.
+- `plan/PROFILE.md` now records `environment_class: ephemeral`, the probe evidence path
+  `plan/amendment-v36/ENVIRONMENT_PROBE.md`, and the applicable `[ephemeral]` protections.
+- `.checkpoints/state.json`: stale pending item `external-generation-branch-push-requires-authentication`
+  removed; verified remote head `8068f965135ffefc0094ce25ce50dce0395a8efd` recorded;
+  active step set to `S-AMEND-002`; artifact hashes refreshed for changed files.
+- Next step: S-AMEND-002.
