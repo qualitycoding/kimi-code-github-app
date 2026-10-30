@@ -51,3 +51,13 @@ The amendment plan itself is preserved at `plan/amendment-v36/AMENDMENT_V36_PLAN
   status must remain `BLOCKED — HUMAN DECISION REQUIRED` under v3.6 until S-000 resolves
   the node tag on the implementation host.
 - Next step: S-AMEND-003.
+
+## 2026-10-30T21:34:00Z — S-AMEND-003 — attempt 1 — pass
+
+- `HANDOFF.md` now restates protocol v3.6 Global Rule 6 (commit + push after every green
+  step, amendment round, review record, or gate record; `ls-remote` verification; mismatch
+  reporting; PAT prohibition with bundle fallback).
+- `plan/PLAN.md` opening contains the same global persistence rule; all 24 connector steps
+  gained a `Persistence (v3.6 Rule 6)` action and a remote-HEAD verification clause in
+  `Done when`. `reviews/COLD_READ.md` intentionally untouched (deferred to S-AMEND-008).
+- Next step: S-AMEND-004.

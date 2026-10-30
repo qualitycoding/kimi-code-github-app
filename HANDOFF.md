@@ -62,6 +62,21 @@ S-REVIEW, S-ADVERSARIAL, and S-RETRO require fresh-context agents that authored 
 
 ## Integrity and persistence rules
 
+Protocol v3.6 persistence rule (Global Rule 6), restated:
+
+> **Persistence** `[All]`: After every step turns green, after every amendment round, after
+> every review record, and after every gate record: commit the changed paths with a precise
+> message, push to the working branch, verify the remote head with `git ls-remote`, and
+> record the verified hash in `EXECUTION_LOG.md`. If local HEAD and the remote branch hash
+> differ, stop and reconcile from committed state; never force-push. If push fails
+> transiently, retry up to three times with 5, 15, and 45 second delays, then retry once
+> with `git -c http.version=HTTP/1.1 push`. If authentication remains unavailable, do not
+> request or reuse a pasted PAT: write a Git bundle under the durable output path, record
+> the path, and report the mismatch as blocked. A locally blocked verification is never
+> marked completed. Every connector step in `plan/PLAN.md` carries this as an explicit
+> `Persistence (v3.6 Rule 6)` action and a remote-HEAD verification clause in its
+> `Done when`.
+
 Rule 9, restated verbatim:
 
 > **Integrity** `[All]`: No step may fabricate, cherry-pick without disclosure, or manually alter data, test results, benchmarks, or figures. In addition:
