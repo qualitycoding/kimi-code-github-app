@@ -75,3 +75,17 @@ The amendment plan itself is preserved at `plan/amendment-v36/AMENDMENT_V36_PLAN
   `research/results/aggregate-test-log.json`; descriptive postcondition names in S-011,
   S-012, S-015, S-019, and S-RETRO now name their concrete `Outputs` paths.
 - Next step: S-AMEND-005.
+
+## 2026-10-30T21:52:00Z — S-AMEND-005 — attempt 1 — pass
+
+- `HANDOFF.md` gained the `Ephemeral execution` section: durable-mount rule, turn-start
+  restaging commands, runtime re-staging under `.runtime/`, one-step chunking, resume from
+  `.checkpoints/state.json` + `EXECUTION_LOG.md`, and the `On container loss` rule
+  (restore last remote-verified commit, rerun current step from declared Inputs, never
+  continue from unverified local state, never force-push).
+- All 24 connector steps gained a `Resumption (v3.6)` pre-action requiring the
+  turn-start branch/remote/runtime checks.
+- Connector S-000 gained the `Ephemeral environment (v3.6)` action: environment-class
+  probe recorded in `ENVIRONMENT_VERIFICATION.md`, durable-mount discipline, runtime
+  restaging, and blocked-tool behavior (BLOCKED.md, no version/credential substitution).
+- Next step: S-AMEND-006.

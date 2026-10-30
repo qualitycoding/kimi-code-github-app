@@ -60,6 +60,16 @@ S-REVIEW, S-ADVERSARIAL, and S-RETRO require fresh-context agents that authored 
 
 `EXECUTION_LOG.md` starts in S-000 and receives one line per step attempt: UTC time, step ID, attempt, pass/fail/blocked, commit hash, and short note. Corrections create lessons before work continues. New subject facts create knowledge items before work continues.
 
+## Ephemeral execution
+
+The execution environment is classified `environment_class=ephemeral` (probe: `plan/amendment-v36/ENVIRONMENT_PROBE.md` for the amendment run; the implementation run re-probes in S-000). Any container may disappear at a turn boundary. Therefore:
+
+- **Durable mount.** All durable state lives inside the repository working tree at the recorded durable path; nothing required may be kept only in `/tmp` (`/tmp` is for disposable caches only).
+- **Turn-start restaging.** At the start of every step or resumed turn, run the branch/remote checks (`git status --short --branch`, `git rev-parse HEAD`, `git ls-remote origin <branch>`); local HEAD and the remote hash must match before work continues. Restage the pinned Node runtime under the repo-local ignored `.runtime/` directory per `plan/ENVIRONMENT.md` when missing, and re-run `plan/ENVIRONMENT.md` setup when the runtime archive is absent (recording the substitution in `DEVIATIONS.md`).
+- **One-step chunking.** One step is one resumable chunk; never leave a step half-finished without recording the exact next action in `.checkpoints/state.json` and `EXECUTION_LOG.md`.
+- **Resume rule.** Resume only from `.checkpoints/state.json` plus `EXECUTION_LOG.md`, never from unrecorded local state.
+- **On container loss.** Restore the last remote-verified commit (re-clone or reset to the recorded remote head), rerun the current step from its declared inputs, and never continue from unverified local state; never force-push.
+
 ## Integrity and persistence rules
 
 Protocol v3.6 persistence rule (Global Rule 6), restated:
