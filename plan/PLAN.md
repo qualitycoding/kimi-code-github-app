@@ -463,3 +463,8 @@ completed.
 - Relevant decisions/claims: D-025, D-033
 - Lessons applied: L-20261028T233100Z-git-auth-header; L-20261028T233130Z-private-knowledge-clone
 - Exclusive resources: knowledge store; Git push credentials
+
+
+## Normative closing order (v3.9 addendum)
+
+Closing steps execute in this order: **S-RETRO** (retrospective) precedes **S-KNOW** (lessons/knowledge; G-003 controls publication).
