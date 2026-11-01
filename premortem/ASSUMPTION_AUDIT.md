@@ -112,3 +112,11 @@ The red run proves clean failure against stubs, not functional behavior. `Confir
 - No falsified item requires a new wrong-assumption L/K pair or plan amendment. Earlier pre-mortem corrections are already recorded in L-20261029T002500Z and L-20261029T002530Z and are included in the audited hardened text.
 
 The audit converges in one pass. No Critical/High consequence remains unresolved, so no blocked-status escalation is required.
+
+## v3.9 addendum assumption audit (2026-11-02)
+
+| Assumption | Basis | Verdict |
+|---|---|---|
+| Audited baseline `v3.6` is accurate | Addendum gap audit at rollout | Accepted (verified by final consistency check) |
+| Source-tip drift is the rollout's own addendum commit | Commit message + parent chain | Confirmed (D-901) |
+| No local build/mutation execution available | Sandbox probe (git transport blocked; API-only writes) | Confirmed; CI substitution recorded (D-905) |

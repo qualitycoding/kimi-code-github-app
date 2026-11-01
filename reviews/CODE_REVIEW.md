@@ -1,5 +1,11 @@
-# Traditional code review
+# Code review record — v3.9 addendum
 
-Status: NOT RUN — planning artifact only. No connector implementation exists to review.
+**Repository:** `qualitycoding/kimi-code-github-app`. Subject: planning-amendment diff only
+(planning docs, no product code changed).
 
-S-REVIEW must replace this file with the fresh-context review, findings by severity, and fix-commit or risk links. No finding count or pass is claimed at planning time.
+Fresh-context independent reviewer unavailable in this environment. Recorded
+substitution (D-906, High risk): the amendment author performed a
+self-review against the addendum step checklist; every question found is
+resolved in `plan/DECISIONS.md` or `DEVIATIONS.md`. This is **not** claimed as
+an independent review pass; an independent review remains pending and is listed
+as a residual risk in `premortem/RISK_REGISTER.md`.

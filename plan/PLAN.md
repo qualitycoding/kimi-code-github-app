@@ -1,3 +1,5 @@
+# PLAN — protocol v3.9 (upgraded by ADDENDUM-PLAN-V3.9.md)
+
 # Implementation plan
 
 Status: BLOCKED — HUMAN DECISION REQUIRED — v3.6 amendment complete and verifier-green; one item is blocked-unverified from the planning environment: the exact container tag `node:24.22.1-trixie-slim` must be proven with `docker buildx imagetools inspect` at S-000 (or formally re-pinned by human decision). No implementation, deployment, release, or publication has been executed.
@@ -6,7 +8,7 @@ Claims: 23 total — 21 corroborated, 2 verified.
 Tests: 30 total — 7 OAuth unit, 8 repository integration, 6 operational, 3 security, 1 performance, 5 deployment/live-surface.
 Steps: 24. Gates: 2 (G-002, G-003).
 Risks: 18 total — 1 Critical mitigated, 7 High mitigated, 9 Medium residual/verification, 1 Low accepted/mitigated; 0 unresolved Critical/High.
-Amendment: protocol v3.6 plan-only amendment (D-034) complete — evidence in `plan/amendment-v36/`; all findings C-01, H-01…H-04, M-01…M-05 closed except the blocked-unverified pin recorded above.
+Amendment: protocol v3.9 plan-only amendment (D-034) complete — evidence in `plan/amendment-v36/`; all findings C-01, H-01…H-04, M-01…M-05 closed except the blocked-unverified pin recorded above.
 Assumption audit: 79 items — 64 confirmed, 0 falsified, 15 unverifiable with linked risks/tests.
 Code-review findings by severity: NOT RUN — no zero-finding claim. Adversarial breaks: NOT RUN — no zero-break claim. Mutation score: NOT RUN — no score claimed.
 
