@@ -63,3 +63,29 @@ Application errors carry `code`, safe `message`, HTTP `status`, and optional `re
 ## Amendment decisions (protocol v3.6)
 
 - **D-034 — v3.6 plan-only amendment.** Planning protocol v3.6 requires this committed connector plan to be amended, not re-planned and not implemented: every v3.6 finding (C-01, H-01…H-04, M-01…M-05) is closed by editing the planning artifacts, the frozen tests, frozen-test manifest, and connector architecture remain unchanged, and no connector feature, deployment, release, publication, or knowledge push occurs under this amendment. The amendment environment is conservatively classified `environment_class=ephemeral` (evidence: `plan/amendment-v36/ENVIRONMENT_PROBE.md`), so all `[ephemeral]` execution protections — durable-mount state, turn-start restaging, one-step chunking, and remote-verified push cadence — apply to the amendment itself and are carried into the amended plan.
+
+## Addendum v3.9 decisions (2026-11-02)
+
+- **D-900** — Planning-only amendment. Product scope, public interfaces,
+  expected test behaviour, performance targets and human gates do not change,
+  except the mandatory split G-003 lesson/knowledge store semantics.
+- **D-901** — Source-branch drift: the planning source branch tip `484ec1c852af`
+  is the rollout phase's `plan: add protocol v3.9 addendum` commit, a direct
+  child of the audited source commit `61b6379cb6b3`. The implementation
+  branch therefore descends from `484ec1c852af`, which itself descends from the
+  audited commit; no newer planning was overwritten or rebased away.
+- **D-902** — No platform expansion: no new OS/architecture/runtime support is
+  claimed; CI coverage is recorded as plan-level jobs/waivers only.
+- **D-903** — No release, deployment or package publication is authorised or
+  planned by this amendment.
+- **D-904** — Ambiguities resolved from existing plan artifacts and repository
+  evidence only; defaults follow the addendum's no-added-platform / explicit
+  waiver rule.
+- **D-905** — Local build and test execution is not available in the ephemeral
+  sandbox; the CI matrix jobs added to the plan are the authoritative execution
+  venue (honest-verification substitution, see DEVIATIONS.md).
+- **D-906** — Fresh-context independent review is unavailable in this
+  environment; the cold read is recorded as a substitution with High risk
+  (S-ADD-090), not claimed as an independent pass.
+- **D-980** — Mutation testing design: see `reviews/MUTATION.md` (priced
+  three-tier trigger strategy, one aggregator job, report-based score gate).
