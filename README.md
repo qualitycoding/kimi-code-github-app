@@ -46,3 +46,7 @@ any port; keep exact-string matching for all non-loopback redirect URIs (HTTPS o
 a decision entry recording this rule before or during S-003, and cover it with the
 redirect-validation tests (S-003 evidence: redirect-to-private and DNS-rebinding cases
 already required by the plan).
+
+## Licence
+
+Apache License 2.0. See [LICENSE](LICENSE).
