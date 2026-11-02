@@ -26,3 +26,14 @@ Severity follows planning protocol v3.4 Global Rule 4. `Mitigated` means a defen
 ## Convergence and release rule
 
 Round 1 found R-001 through R-006 and R-014 (1 Critical, 6 High); round 2 found zero new or unresolved Critical/High risks; round 3 (amendment) found R-016 (High, mitigated by the BLOCKED status and the S-000 resolution gate) plus Medium R-017 and R-018. No Critical/High risk is unresolved. R-007 through R-013, R-015, R-017, and R-018 are Medium/Low residual or verification risks. Their tests and gates are mandatory: calling this plan READY does not claim that any NOT RUN implementation review, live integration, deployment, benchmark, or mutation check has passed.
+
+## v3.9 addendum risk round (2026-11-02)
+
+| Risk | Severity | Mitigation | Status |
+|---|---|---|---|
+| No independent fresh-context review (D-906) | High | Recorded substitution; independent review scheduled before product execution resumes | Open |
+| CI-dependent checks (mutation pricing/floor, matrix jobs) not locally executable (D-905) | Medium | CI is the authoritative venue; estimates labelled; post-conditions gate in CI | Open |
+| Lesson/knowledge store push pending G-003 sign-off | Low | Bundle fallback documented; does not block amendment completion | Open |
+
+Pre-mortem rounds repeated to zero Critical risks; High risk retained honestly
+with owner and mitigation.

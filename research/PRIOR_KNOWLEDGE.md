@@ -17,3 +17,10 @@ No active lessons matched `domain:github-integration`, `tech:github`, `tech:gith
 - `K-20261009T160119Z-vite-vitest-node`: Node/Vitest compatibility needs an engine check. Applied to environment pinning; versions must be refreshed before use.
 
 Other entries matching only a broad technology tag were read as non-applicable because their subjects were unrelated packages or audio/Web Audio projects. No prior entry supplies evidence for GitHub App, MCP, OAuth, or Kimi behavior; those remain research questions.
+
+## R0 prior-knowledge load — v3.9 addendum (2026-11-02)
+
+Loaded from the knowledge store topics relevant to this amendment: planning
+protocol v3.9 change record, mutation-in-CI pricing practice, split
+lesson/knowledge store semantics, ephemeral-environment durable-mount
+discipline. No repository product knowledge is altered by this amendment.

@@ -1,5 +1,7 @@
 # Kimi–GitHub connector implementation handoff
 
+
+Reading order: `HANDOFF.md` → `ADDENDUM-PLAN-V3.9.md` → `plan/PLAN.md`. Later protocol amendments take precedence only where the gap ledger says so.
 ## Purpose and profiles
 
 Build a read-only GitHub App connector for Kimi Code CLI and `kimi web`: users install the App on personal/organization accounts, select all or some repositories, complete browser OAuth without managing a PAT, and use three live repository-read MCP tools. A thin Kimi plugin points to a hosted OAuth/MCP backend. Production/public release is separately gated.

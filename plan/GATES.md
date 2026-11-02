@@ -19,3 +19,11 @@ While halted, independent non-external steps may continue. No production deploym
 - **Branches:** `push-to-proposed` → copy entries in Appendix C layout, regenerate indexes, and push to `qualitycoding/knowledge`. `push-to` → perform the same actions on the named target. `do-not-push` → retain entries on the implementation branch and finish without external knowledge publication. Up to three rejected-push retries use pull/index regeneration; persistent failure or no response produces `knowledge-20261028T232935Z.bundle` and reports its path.
 
 No other gates are required: this is not a research-result publication, and staging uses only predeclared test resources. G-002 covers every production or public irreversible action; G-003 is mandatory for the knowledge push.
+
+## G-003 — split learning stores (v3.9)
+
+Lessons and knowledge are pushed to **separate** stores: the `Lessons`
+repository and the `knowledge` repository. G-003 requests the destinations at
+plan close; **do-not-push** either store until human sign-off; the documented
+bundle fallback applies when sign-off is withheld. Store publication never holds
+up the repository amendment's completion record.
